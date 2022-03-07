@@ -33,6 +33,13 @@ group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit", require: false
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "rspec-rails"
+  gem "rubocop", require: false
+  gem "rubocop-i18n", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rake", require: false
+  gem "rubocop-thread_safety", require: false
 end
 
 group :development do
@@ -46,19 +53,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-
-group :development, :test do
-  gem "rubocop", require: false
-  gem "rubocop-i18n", require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rake", require: false
-  gem "rubocop-thread_safety", require: false
-end
-
-group :development, :test do
-  gem 'rspec-rails'
-end
-
-group :development, :test do
-end
