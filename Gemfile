@@ -55,3 +55,10 @@ group :development, :test do
   gem "rubocop-rake", require: false
   gem "rubocop-thread_safety", require: false
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :development, :test do
+end
