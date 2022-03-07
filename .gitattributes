@@ -1,2 +1,4 @@
 bin/brakeman linguist-generated
 bin/bundler-audit linguist-generated
+
+bin/rubocop linguist-generated
