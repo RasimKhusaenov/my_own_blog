@@ -1,0 +1,2 @@
+bin/brakeman linguist-generated
+bin/bundler-audit linguist-generated
