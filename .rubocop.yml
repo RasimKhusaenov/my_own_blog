@@ -7,6 +7,7 @@ require:
   - rubocop-thread_safety
 
 AllCops:
+  TargetRubyVersion: 3.0
   NewCops: enable
   Exclude:
     - bin/**/*
