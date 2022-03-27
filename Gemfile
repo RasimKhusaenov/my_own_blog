@@ -43,3 +43,5 @@ end
 gem "simple_form"
 gem "slim-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "pundit", "~> 2.2"

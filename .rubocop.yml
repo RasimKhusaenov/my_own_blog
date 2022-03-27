@@ -10,12 +10,18 @@ AllCops:
   TargetRubyVersion: 3.0
   NewCops: enable
   Exclude:
+    - app/policies/application_policy.rb
     - bin/**/*
     - config/initializers/simple_form*.rb
     - db/**/*
     - node_modules/**/*
     - vendor/**/*
     - tmp/**/*
+    - "**/*.erb"
+    - "**/*.slim"
+
+I18n/GetText/DecorateFunctionMessage:
+  Enabled: false
 
 I18n/GetText/DecorateString:
   Exclude:

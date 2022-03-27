@@ -1,6 +1,5 @@
-= simple_form_for user, url: sessions_path do |form|
-  = form.error :base
-
+= simple_form_for user, url: session_path do |form|
   = form.input :email
   = form.input :password, required: true
+
   = form.submit "Sign In", class: "btn btn-primary"
