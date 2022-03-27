@@ -3,10 +3,18 @@ require:
   - rubocop-i18n
   - rubocop-performance
   - rubocop-rake
+  - rubocop-rspec
   - rubocop-thread_safety
 
 AllCops:
   NewCops: enable
+  Exclude:
+    - bin/**/*
+    - config/initializers/simple_form*.rb
+    - db/**/*
+    - node_modules/**/*
+    - vendor/**/*
+    - tmp/**/*
 
 I18n/GetText/DecorateString:
   Exclude:
