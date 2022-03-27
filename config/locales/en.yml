@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  authentication:
+    sign_in:
+      success: "You've successfully signed in!"
+    sign_up:
+      success: "You've successfully signed up!"

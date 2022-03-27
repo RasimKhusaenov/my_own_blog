@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if current_user
       session[:current_user_id] = current_user.id
-      redirect_to blog_path, notice: "You've successfully signed in!"
+      redirect_to blog_path, notice: I18n.t("authentication.sign_in.success")
     else
       @user = User.new
       @user.errors.add :base, "Wrong email or password"

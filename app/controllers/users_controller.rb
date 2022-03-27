@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
 
     if @user.save
-      redirect_to blog_path, notice: "You've successfully signed up!"
+      redirect_to blog_path, notice: I18n.t("authentication.sign_up.success")
     else
       render :new
     end
