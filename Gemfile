@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -19,10 +17,17 @@ gem "webpacker", "~> 4.0"
 
 gem "bootsnap", ">= 1.4.2", require: false
 
+group :test do
+  gem "formulaic"
+end
+
 group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit", require: false
   gem "byebug", platforms: %i[mri mingw x64_mingw]
+  gem "capybara", require: false
+  gem "factory_bot_rails"
+  gem "faker"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-i18n", require: false
