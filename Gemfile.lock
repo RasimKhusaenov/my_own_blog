@@ -128,6 +128,8 @@ GEM
       nio4r (~> 2.0)
     pundit (2.2.0)
       activesupport (>= 3.0.0)
+    pundit-matchers (1.7.0)
+      rspec-rails (>= 3.0.0)
     racc (1.6.0)
     rack (2.2.3)
     rack-proxy (0.7.2)
@@ -221,6 +223,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -292,6 +296,7 @@ DEPENDENCIES
   pg
   puma (~> 4.1)
   pundit (~> 2.2)
+  pundit-matchers
   rails (~> 6.0.4.7)
   rspec-rails
   rubocop
@@ -302,6 +307,7 @@ DEPENDENCIES
   rubocop-rspec
   rubocop-thread_safety
   sass-rails (>= 6)
+  shoulda-matchers
   simple_form
   simplecov
   slim-rails
