@@ -294,7 +294,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg
-  puma (~> 4.1)
+  puma
   pundit (~> 2.2)
   pundit-matchers
   rails (~> 6.0.4.7)
