@@ -20,7 +20,7 @@
         <% if current_user.present? %>
           <li class="nav-item">
             <%= link_to(
-                  UserDecorator.new(current_user).full_name,
+                  decorated_user.full_name,
                   users_path,
                   class: "nav-link"
             ) %>
