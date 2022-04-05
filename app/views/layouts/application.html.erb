@@ -20,7 +20,7 @@
         <% if current_user.present? %>
           <li class="nav-item">
             <%= link_to(
-                  current_user.full_name.presence || current_user.email,
+                  decorated_user.full_name,
                   users_path,
                   class: "nav-link"
             ) %>

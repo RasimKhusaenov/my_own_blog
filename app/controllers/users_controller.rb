@@ -1,21 +1,19 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   skip_after_action :verify_authorized, only: %i[new create]
 
+  expose :user
+
   def show
+    self.user = current_user
+
     authorize User
   end
 
-  def new
-    @user = User.new
-  end
+  def new; end
 
   def create
-    @user = User.new(users_params)
-
-    if @user.save
-      session[:current_user_id] = @user.id
+    if user.save
+      session[:current_user_id] = user.id
       redirect_to blog_path, notice: I18n.t("authentication.sign_up.success")
     else
       render :new
@@ -24,7 +22,7 @@ class UsersController < ApplicationController
 
   private
 
-  def users_params
+  def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 end

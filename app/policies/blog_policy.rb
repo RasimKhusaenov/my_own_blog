@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class BlogPolicy < ApplicationPolicy
   class Scope < Scope
     def index?
