@@ -1,6 +1,5 @@
 require "rails_helper"
 
-# rubocop:disable Metrics/BlockLength
 RSpec.describe "Users", type: :request do
   let(:valid_attributes) { { first_name: "Rasim", email: "rasim.khusaenov@flatstack.dev", password: "101" } }
   let(:invalid_attributes) { { first_name: "Rasim", password: "101" } }
@@ -52,4 +51,3 @@ RSpec.describe "Users", type: :request do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

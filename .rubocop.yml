@@ -25,6 +25,10 @@ I18n/RailsI18n/DecorateString:
   Exclude:
     - spec/**/*.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/requests/**/*.rb
+
 RSpec/Capybara/FeatureMethods:
   EnabledMethods: [feature, scenario]
 
