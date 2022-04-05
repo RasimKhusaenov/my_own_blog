@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+  authentication:
+    sign_in:
+      success: "You've successfully signed in!"
+      failure: "Wrong email or password!"
+    sign_out:
+      success: "You've successfully signed out!"
+    sign_up:
+      success: "You've successfully signed up!"
+    not_authenticated:
+      user: "You must sign in first!"
+      system: "No currrent_user_id in session"

@@ -25,8 +25,21 @@ I18n/RailsI18n/DecorateString:
   Exclude:
     - spec/**/*.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/requests/**/*.rb
+
+RSpec/Capybara/FeatureMethods:
+  EnabledMethods: [feature, scenario]
+
 Style/Documentation:
   Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
