@@ -4,4 +4,4 @@
   = form.input :email
   = form.input :password, required: true
 
-  = form.submit "Sign Up", class: "btn btn-primary"
+  = form.submit "#{user.new_record? ? "Sign Up" : "Update"}", class: "btn btn-primary"

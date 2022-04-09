@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
   skip_after_action :verify_authorized, only: %i[new create]
+  before_action -> { authorize User }, only: %i[show edit update]
 
   expose :user
 
-  def show
-    self.user = current_user
-
-    authorize User
-  end
+  def show; end
 
   def new; end
 
@@ -17,6 +14,16 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: I18n.t("authentication.sign_up.success")
     else
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to user_path
+    else
+      render :edit
     end
   end
 

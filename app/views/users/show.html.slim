@@ -1,13 +1,16 @@
 h1 Your Profile
-- if current_user.first_name.present?
-    p
-      strong First name:
-      |  #{current_user.first_name}
+p
+  strong First name:
+  |  #{current_user.first_name}
+
 - if current_user.last_name.present?
-    p
-      strong Last name:
-      |  #{current_user.last_name}
+  p
+    strong Last name:
+    |  #{current_user.last_name}
 
 p
   strong Email:
   |  #{current_user.email}
+
+p
+  = link_to "Edit profile", edit_user_path, class: "btn btn-secondary"
