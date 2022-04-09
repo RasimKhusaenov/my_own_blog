@@ -4,7 +4,7 @@ RSpec.feature "Sign Out" do
   include_context "when user signed in"
 
   scenario "User signs out" do
-    visit blog_path
+    visit root_path
 
     click_link "Sign out"
 

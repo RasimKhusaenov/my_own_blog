@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if authenticated_user
       session[:current_user_id] = authenticated_user.id
-      redirect_to blog_path, notice: I18n.t("authentication.sign_in.success")
+      redirect_to root_path, notice: I18n.t("authentication.sign_in.success")
     else
       redirect_to new_session_path, flash: { alert: I18n.t("authentication.sign_in.failure") }
     end
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:current_user_id)
 
-    redirect_to blog_path, notice: I18n.t("authentication.sign_out.success")
+    redirect_to root_path, notice: I18n.t("authentication.sign_out.success")
   end
 
   private
