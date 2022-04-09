@@ -10,6 +10,6 @@ module Authorization
   private
 
   def deny_access!(error)
-    redirect_to blog_path, alert: error.message
+    redirect_to root_path, alert: error.message
   end
 end

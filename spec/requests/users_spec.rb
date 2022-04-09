@@ -19,7 +19,7 @@ RSpec.describe "Users", type: :request do
 
       it "redirects to the blog page" do
         post user_path, params: { user: valid_attributes }
-        expect(response).to redirect_to(blog_path)
+        expect(response).to redirect_to(root_path)
       end
     end
 
