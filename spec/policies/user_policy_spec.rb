@@ -8,12 +8,13 @@ RSpec.describe UserPolicy do
   context "when user isn't present" do
     let(:user) { nil }
 
-    it { is_expected.not_to permit_action(:show) }
+    it { is_expected.to permit_actions(%i[new create]) }
+    it { is_expected.to forbid_actions(%i[show update]) }
   end
 
   context "when user is present" do
     let(:user) { create(:user) }
 
-    it { is_expected.to permit_action(:show) }
+    it { is_expected.to permit_actions(%i[new create show update]) }
   end
 end

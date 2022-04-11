@@ -1,5 +1,5 @@
 class BlogController < ApplicationController
-  before_action :authenticate_current_user!, only: %i[]
+  skip_before_action :authorize_resource!
   skip_after_action :verify_authorized, only: %i[index]
 
   def index; end

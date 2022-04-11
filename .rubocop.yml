@@ -17,6 +17,9 @@ AllCops:
     - vendor/**/*
     - tmp/**/*
 
+I18n/GetText/DecorateFunctionMessage:
+  Enabled: false
+
 I18n/GetText/DecorateString:
   Exclude:
     - spec/**/*.rb

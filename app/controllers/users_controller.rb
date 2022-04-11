@@ -1,13 +1,7 @@
 class UsersController < ApplicationController
-  skip_after_action :verify_authorized, only: %i[new create]
-
   expose :user
 
-  def show
-    self.user = current_user
-
-    authorize User
-  end
+  def show; end
 
   def new; end
 
@@ -20,7 +14,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if current_user.update(user_params)
+      redirect_to user_path
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def authorize_resource!
+    authorize User
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)
