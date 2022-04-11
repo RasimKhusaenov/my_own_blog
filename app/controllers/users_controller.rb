@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[new create]
+  skip_before_action :authorize_resource!
+  skip_after_action :verify_authorized
+
   expose :user
 
   def show; end
@@ -25,10 +29,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def authorize_resource!
-    authorize User
-  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password)

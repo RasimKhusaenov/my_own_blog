@@ -8,7 +8,7 @@ module Authentication
     helper_method :current_user
   end
 
-  def authenticate_current_user!
+  def authenticate_user!
     return if session[:current_user_id] && current_user.present?
 
     raise UserNotAuthenticated, "No current_user_id in session"

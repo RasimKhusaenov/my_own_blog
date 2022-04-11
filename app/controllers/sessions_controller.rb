@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[new create]
   skip_before_action :authorize_resource!
   skip_after_action :verify_authorized
 
