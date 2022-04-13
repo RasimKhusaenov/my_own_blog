@@ -42,3 +42,8 @@ en:
     not_authenticated:
       user: "You must sign in first!"
       system: "No currrent_user_id in session"
+  helpers:
+    submit:
+      user:
+        create: "Sign Up"
+        update: "Update"

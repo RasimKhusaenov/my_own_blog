@@ -1,7 +1,9 @@
-class BlogController < ApplicationController
+class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :authorize_resource!
   skip_after_action :verify_authorized, only: %i[index]
 
-  def index; end
+  def index
+    @articles = Article.all
+  end
 end
