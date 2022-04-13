@@ -30,7 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  article:
+    created:
+      success: "Article saved!"
   authentication:
     sign_in:
       success: "You've successfully signed in!"
