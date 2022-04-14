@@ -1,4 +1,19 @@
 class ApplicationPolicy
+  class BaseScope
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      raise NotImplementedError(_("You must define #resolve in %{class_name}"), class_name: self.class)
+    end
+
+    private
+
+    attr_reader :user, :scope
+  end
+
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -32,20 +47,5 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  class Scope
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      raise NotImplementedError(_("You must define #resolve in %{class_name}"), class_name: self.class)
-    end
-
-    private
-
-    attr_reader :user, :scope
   end
 end

@@ -1,28 +1,26 @@
-h1 class="text-center"
-  | Articles
+h1 class="text-center" Articles
 
-- if current_user&.administrative_role?
-  div class="d-grid gap-2 col-6 mx-auto"
-    a role="button" class="btn btn-outline-primary mb-3" href="#{new_article_path}"
-      | New Article
+- if policy(Article).create?
+  div class="d-grid gap-2 mx-auto"
+    = render "form"
 
-- @articles.each do |article|
-  - card_color = article.published? ? "dark" : "secondary"
-  div class="card border-#{card_color} mb-3"
+- articles.each do |article|
+  / - card_color = article.published? ? "dark" : "secondary"
+  div class="card border-#{article.card_color} mb-3"
     div class="card-header"
-      | #{article.created_at}
-    div class="card-body text-#{card_color}"
+      = article.created_at
+    div class="card-body text-#{article.card_color}"
       h5 class="card-title"
-        | #{article.title}
+        = article.title
       p class="card-text"
-        | #{article.content[..43]}
+        = article.preview
 
-- if @articles.empty?
-  div class="card border-secondary mb-3"
+- if articles.empty?
+  div class="card text-dark bg-warning mb-3"
     div class="card-header"
-      | #{Time.current}
-    div class="card-body text-secondary"
+      | WARNING
+    div class="card-body"
       h5 class="card-title"
-        | There should be an article here.
+        | There should be an articles here.
       p class="card-text"
         | But it is not.

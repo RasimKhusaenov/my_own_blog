@@ -172,6 +172,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.3.0)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.5)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
@@ -304,6 +307,7 @@ DEPENDENCIES
   pundit (~> 2.2)
   pundit-matchers
   rails (~> 6.0.4.7)
+  responders
   rspec-rails
   rubocop
   rubocop-i18n

@@ -3,28 +3,17 @@ class ArticlesController < ApplicationController
   skip_before_action :authorize_resource!, only: %i[index show]
   skip_after_action :verify_authorized
 
-  expose :article
+  expose :article, scope: -> { policy_scope(Article) }
+  expose :articles, -> { ArticleDecorator.wrap(policy_scope(Article)) }
 
-  def index
-    @articles = if current_user&.administrative_role?
-                  Article.all
-                else
-                  Article.published.all
-                end
-  end
+  def index; end
 
-  def show
-    @article = Article.find(params[:id])
-  end
-
-  def new; end
+  def show; end
 
   def create
-    if article.save
-      redirect_to article, notice: I18n.t("article.created.success")
-    else
-      render :new
-    end
+    article.save
+
+    respond_with article, action: :index
   end
 
   private

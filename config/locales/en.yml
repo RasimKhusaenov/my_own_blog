@@ -30,21 +30,23 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  article:
-    created:
-      success: "Article saved!"
-  authentication:
-    sign_in:
-      success: "You've successfully signed in!"
-      failure: "Wrong email or password!"
-    sign_out:
-      success: "You've successfully signed out!"
-    sign_up:
-      success: "You've successfully signed up!"
-    not_authenticated:
-      user: "You must sign in first!"
-      system: "No currrent_user_id in session"
+  flash:
+    articles:
+      create:
+        notice: "Article saved!"
+    authentication:
+      sign_in:
+        success: "You've successfully signed in!"
+        failure: "Wrong email or password!"
+      sign_out:
+        success: "You've successfully signed out!"
+      sign_up:
+        success: "You've successfully signed up!"
+      not_authenticated:
+        user: "You must sign in first!"
+        system: "No currrent_user_id in session"
   helpers:
+    not_found: "Not found"
     submit:
       user:
         create: "Sign Up"
