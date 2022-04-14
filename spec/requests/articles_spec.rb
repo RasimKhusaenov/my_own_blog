@@ -21,13 +21,6 @@ RSpec.describe "Articles", type: :request do
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
-      get new_article_path
-      expect(response).to be_successful
-    end
-  end
-
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new article" do

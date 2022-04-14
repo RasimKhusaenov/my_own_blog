@@ -44,7 +44,6 @@ en:
         success: "You've successfully signed up!"
       not_authenticated:
         user: "You must sign in first!"
-        system: "No currrent_user_id in session"
   helpers:
     not_found: "Not found"
     submit:
