@@ -1,4 +1,4 @@
-class ArticleDecorator < SimpleDelegator
+class ArticleDecorator < BaseDecorator
   def self.wrap(collection)
     collection.map do |obj|
       new obj
