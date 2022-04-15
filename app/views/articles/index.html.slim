@@ -5,10 +5,10 @@ h1 class="text-center" Articles
     = render "form"
 
 - articles.each do |article|
-  div class="card border-#{article.card_color} mb-3"
-    div class="card-header"
-      = article.created_at
-    = link_to article, class: "text-decoration-none"
+  = link_to article, class: "text-decoration-none"
+    div class="card border-#{article.card_color} mb-3"
+      div class="card-header"
+        = article.created_at
       div class="card-body text-#{article.card_color}"
         h5 class="card-title"
           = article.title
