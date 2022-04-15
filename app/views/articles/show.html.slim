@@ -1,3 +1,7 @@
 h1 #{article.title}
 p
   | #{article.content}
+
+= button_to "Publish", article_path(article),
+  method: :patch, params: { article: { published: true } },
+  class: "btn btn-primary"
