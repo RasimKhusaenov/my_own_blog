@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "blog#index"
+  root to: "articles#index"
 
-  resource :blog, only: %i[index]
+  resources :articles, only: %i[new create index show]
   resource :user, only: %i[new create show edit update]
   resource :session, only: %i[new create destroy]
 

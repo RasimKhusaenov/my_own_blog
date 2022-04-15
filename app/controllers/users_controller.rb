@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     if user.save
       session[:current_user_id] = user.id
-      redirect_to root_path, notice: I18n.t("authentication.sign_up.success")
+      redirect_to root_path, notice: I18n.t("flash.authentication.sign_up.success")
     else
       render :new
     end

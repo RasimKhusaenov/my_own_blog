@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_27_131021) do
+ActiveRecord::Schema.define(version: 2022_04_11_145310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.boolean "published", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
@@ -23,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_03_27_131021) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "role", default: "reader", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

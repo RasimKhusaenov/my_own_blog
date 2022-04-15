@@ -1,0 +1,25 @@
+h1 class="text-center" Articles
+
+- if policy(Article).create?
+  div class="d-grid gap-2 mx-auto"
+    = render "form"
+
+- articles.each do |article|
+  div class="card border-#{article.card_color} mb-3"
+    div class="card-header"
+      = article.created_at
+    div class="card-body text-#{article.card_color}"
+      h5 class="card-title"
+        = article.title
+      p class="card-text"
+        = article.preview
+
+- if articles.empty?
+  div class="card text-dark bg-warning mb-3"
+    div class="card-header"
+      | WARNING
+    div class="card-body"
+      h5 class="card-title"
+        | There should be an articles here.
+      p class="card-text"
+        | But it is not.
