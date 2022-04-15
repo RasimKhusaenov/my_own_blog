@@ -1,10 +1,4 @@
 class ArticleDecorator < BaseDecorator
-  def self.wrap(collection)
-    collection.map do |obj|
-      new obj
-    end
-  end
-
   def preview
     content.truncate(43)
   end
