@@ -5,7 +5,6 @@ h1 class="text-center" Articles
     = render "form"
 
 - articles.each do |article|
-  / - card_color = article.published? ? "dark" : "secondary"
   div class="card border-#{article.card_color} mb-3"
     div class="card-header"
       = article.created_at
