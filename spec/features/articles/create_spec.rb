@@ -1,11 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Create Article" do
-  include_context "when user signed in"
-
-  before do
-    User.last.update(role: :admin)
-  end
+  include_context "when admin signed in"
 
   let(:article_attributes) { attributes_for(:article) }
 
