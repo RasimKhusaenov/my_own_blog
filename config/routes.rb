@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "articles#index"
 
   resources :articles, only: %i[new create index show] do
-    resources :publications, only: %i[create], controller: "articles/publications"
+    resources :publications, only: %i[create], module: :articles
   end
 
   resource :user, only: %i[new create show edit update]

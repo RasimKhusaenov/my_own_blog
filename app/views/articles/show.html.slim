@@ -2,5 +2,5 @@ h1 #{article.title}
 p
   | #{article.content}
 
-- if current_user&.administrative_role?
+- if policy([:articles, :publication]).create? && article.draft?
   = button_to "Publish", article_publications_path(article), class: "btn btn-primary"

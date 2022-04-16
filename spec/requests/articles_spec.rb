@@ -59,15 +59,4 @@ RSpec.describe "Articles", type: :request do
       expect(response.body).to include(valid_attributes[:title])
     end
   end
-
-  describe "POST /publications" do
-    before do
-      post articles_path, params: { article: valid_attributes }
-      post article_publications_path(Article.last)
-    end
-
-    it "publishes article" do
-      expect(Article.last.published).to be true
-    end
-  end
 end

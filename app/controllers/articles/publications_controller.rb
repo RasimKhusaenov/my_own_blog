@@ -1,21 +1,17 @@
 module Articles
   class PublicationsController < ApplicationController
-    skip_after_action :verify_authorized
-
     expose :article, scope: -> { policy_scope(Article) }
 
     def create
-      if article.update(published: true)
-        redirect_to root_path, notice: I18n.t("flash.articles.publish.success")
-      else
-        redirect_to article_path(article), notice: I18n.t("helpers.failure")
-      end
+      article.update(published: true)
+
+      respond_with article, location: root_path
     end
 
     private
 
     def authorize_resource!
-      authorize Article
+      authorize article, policy_class: Articles::PublicationPolicy
     end
   end
 end

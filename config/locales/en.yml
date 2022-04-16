@@ -34,8 +34,9 @@ en:
     articles:
       create:
         success: "Article saved!"
-      publish:
-        success: "You've published article!"
+      publications:
+        create:
+          success: "You've published article!"
     authentication:
       sign_in:
         success: "You've signed in!"
