@@ -16,12 +16,6 @@ class ArticlesController < ApplicationController
     respond_with article, action: :index
   end
 
-  def edit; end
-
-  def update
-    redirect_to root_path, notice: I18n.t("flash.articles.publish.success") if article.update(article_params)
-  end
-
   private
 
   def authorize_resource!

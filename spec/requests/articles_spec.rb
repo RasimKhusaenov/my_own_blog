@@ -60,10 +60,10 @@ RSpec.describe "Articles", type: :request do
     end
   end
 
-  describe "PATCH /update" do
+  describe "POST /publications" do
     before do
       post articles_path, params: { article: valid_attributes }
-      patch article_path(Article.last), params: { article: { published: true } }
+      post article_publications_path(Article.last)
     end
 
     it "publishes article" do

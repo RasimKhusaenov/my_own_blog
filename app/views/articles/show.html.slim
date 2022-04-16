@@ -3,6 +3,4 @@ p
   | #{article.content}
 
 - if current_user&.administrative_role?
-  = button_to "Publish", article_path(article),
-    method: :patch, params: { article: { published: true } },
-    class: "btn btn-primary"
+  = button_to "Publish", article_publications_path(article), class: "btn btn-primary"

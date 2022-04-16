@@ -47,7 +47,8 @@ en:
       not_authenticated:
         user: "You must sign in first!"
   helpers:
-    not_found: "Not found"
+    failure: "Something went wrong."
+    not_found: "Not found."
     submit:
       user:
         create: "Sign Up"
