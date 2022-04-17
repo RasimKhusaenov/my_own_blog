@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   skip_before_action :authorize_resource!, only: %i[index show]
-  skip_verify_authorized
+  skip_verify_authorized only: %i[index show]
 
   expose :article, scope: -> { authorized(Article.all) }
   expose :articles, -> { ArticleDecorator.wrap(authorized(Article.all)) }
