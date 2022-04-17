@@ -33,19 +33,22 @@ en:
   flash:
     articles:
       create:
-        notice: "Article saved!"
+        success: "Article saved!"
+      publications:
+        create:
+          success: "You've published article!"
     authentication:
       sign_in:
-        success: "You've successfully signed in!"
+        success: "You've signed in!"
         failure: "Wrong email or password!"
       sign_out:
-        success: "You've successfully signed out!"
+        success: "You've signed out!"
       sign_up:
-        success: "You've successfully signed up!"
+        success: "You've signed up!"
       not_authenticated:
         user: "You must sign in first!"
   helpers:
-    not_found: "Not found"
+    not_found: "Not found."
     submit:
       user:
         create: "Sign Up"

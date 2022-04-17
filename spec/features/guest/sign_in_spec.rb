@@ -10,6 +10,6 @@ RSpec.feature "Sign In" do
 
     click_button "Sign In"
 
-    expect(page).to have_content("You've successfully signed in!")
+    expect(page).to have_content("You've signed in!")
   end
 end

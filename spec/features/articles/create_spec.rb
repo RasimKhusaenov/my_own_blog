@@ -12,6 +12,6 @@ RSpec.feature "Create Article" do
 
     click_button "Create Article"
 
-    expect(page).to have_content("Article was successfully created.")
+    expect(page).to have_content("Article saved!")
   end
 end

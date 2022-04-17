@@ -21,6 +21,6 @@ module Authentication
   private
 
   def not_authenticated!
-    redirect_to new_session_path, alert: I18n.t("authentication.not_authenticated.user")
+    redirect_to new_session_path, alert: I18n.t("flash.authentication.not_authenticated.user")
   end
 end

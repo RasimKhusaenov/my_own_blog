@@ -8,6 +8,6 @@ RSpec.feature "Sign Out" do
 
     click_link "Sign out"
 
-    expect(page).to have_content("You've successfully signed out!")
+    expect(page).to have_content("You've signed out!")
   end
 end

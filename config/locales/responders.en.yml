@@ -2,9 +2,9 @@ en:
   flash:
     actions:
       create:
-        success: '%{resource_name} was successfully created.'
+        success: '%{resource_name} was created.'
       update:
-        success: '%{resource_name} was successfully updated.'
+        success: '%{resource_name} was updated.'
       destroy:
-        success: '%{resource_name} was successfully destroyed.'
+        success: '%{resource_name} was destroyed.'
         failure: '%{resource_name} could not be destroyed.'
