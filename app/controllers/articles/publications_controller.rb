@@ -8,6 +8,12 @@ module Articles
       respond_with article, location: root_path
     end
 
+    def destroy
+      article.update(published: false)
+
+      respond_with article, location: root_path
+    end
+
     private
 
     def authorize_resource!
