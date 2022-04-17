@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "Publish Article" do
+RSpec.feature "Unpublish Article" do
   include_context "when admin signed in"
 
   let(:article) { create(:article, :published) }
