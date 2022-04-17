@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ArticlePolicy do
+RSpec.describe Articles::PublicationPolicy do
   let(:user) { build_stubbed(:user) }
   let(:article) { build_stubbed(:article) }
 

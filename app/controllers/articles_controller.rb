@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   skip_before_action :authorize_resource!, only: %i[index show]
-  skip_after_action :verify_authorized
+  skip_verify_authorized only: %i[index show]
 
-  expose :article, scope: -> { policy_scope(Article) }
-  expose :articles, -> { ArticleDecorator.wrap(policy_scope(Article)) }
+  expose :article, scope: -> { authorized(Article.all) }
+  expose :articles, -> { ArticleDecorator.wrap(authorized(Article.all)) }
 
   def index; end
 
@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   private
 
   def authorize_resource!
-    authorize Article
+    authorize! Article
   end
 
   def article_params

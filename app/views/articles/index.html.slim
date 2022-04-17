@@ -1,6 +1,6 @@
 h1 class="text-center" Articles
 
-- if policy(Article).create?
+- if allowed_to?(:create?, Article)
   div class="d-grid gap-2 mx-auto"
     = render "form"
 

@@ -1,10 +1,8 @@
 class ArticlePolicy < ApplicationPolicy
-  class Scope < BaseScope
-    def resolve
-      return scope.all if user&.administrative_role?
+  relation_scope do |relation|
+    next relation if user&.administrative_role?
 
-      scope.published
-    end
+    relation.published
   end
 
   def create?
