@@ -1,8 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "Articles::Publications", type: :request do
-  let(:valid_attributes) { { title: "Internship", content: "It's been a wonderful 3 months" } }
-  let(:invalid_attributes) { { title: "", content: "" } }
+  let(:article) { create(:article, published: published) }
 
   before do
     post user_path, params: { user: attributes_for(:user) }
@@ -10,13 +9,26 @@ RSpec.describe "Articles::Publications", type: :request do
   end
 
   describe "POST /publications" do
+    let(:published) { false }
+
     before do
-      post articles_path, params: { article: valid_attributes }
-      post article_publications_path(Article.last)
+      post article_publications_path(article)
     end
 
     it "publishes article" do
       expect(Article.last.published).to be true
+    end
+  end
+
+  describe "DELETE /publications" do
+    let(:published) { true }
+
+    before do
+      delete article_publication_path(article, article.id)
+    end
+
+    it "unpublishes article" do
+      expect(Article.last.published).to be false
     end
   end
 end
