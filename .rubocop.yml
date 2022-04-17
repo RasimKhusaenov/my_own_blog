@@ -35,6 +35,9 @@ Metrics/BlockLength:
 RSpec/Capybara/FeatureMethods:
   EnabledMethods: [feature, scenario]
 
+RSpec/ImplicitSubject:
+  EnforcedStyle: single_statement_only
+
 Style/Documentation:
   Enabled: false
 

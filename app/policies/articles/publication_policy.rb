@@ -1,7 +1,7 @@
 module Articles
   class PublicationPolicy < ApplicationPolicy
     def create?
-      user&.administrative_role?
+      record.draft? && user&.administrative_role?
     end
   end
 end

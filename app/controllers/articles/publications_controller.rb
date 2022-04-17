@@ -1,6 +1,6 @@
 module Articles
   class PublicationsController < ApplicationController
-    expose :article, scope: -> { policy_scope(Article) }
+    expose :article, scope: -> { authorized(Article.all) }
 
     def create
       article.update(published: true)
@@ -11,7 +11,7 @@ module Articles
     private
 
     def authorize_resource!
-      authorize article, policy_class: Articles::PublicationPolicy
+      authorize! article, with: Articles::PublicationPolicy
     end
   end
 end
