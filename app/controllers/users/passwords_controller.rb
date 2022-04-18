@@ -3,8 +3,6 @@ module Users
     skip_before_action :authorize_resource!
     skip_verify_authorized
 
-    expose :user
-
     def new; end
 
     def create
