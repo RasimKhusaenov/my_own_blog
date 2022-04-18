@@ -6,7 +6,7 @@ module Users
     def new; end
 
     def create
-      if current_password_matches? && new_passwords_matches? && !new_passwords_empty?
+      if current_password_matches? && new_passwords_matches? && new_password_present?
         current_user.update(password: user_params[:new_password])
         redirect_to user_path, notice: I18n.t("flash.user.password.update.success")
       else
@@ -20,8 +20,8 @@ module Users
       current_user.authenticate(user_params[:current_password])
     end
 
-    def new_passwords_empty?
-      user_params[:new_password].blank? && user_params[:new_password_confirmation].blank?
+    def new_password_present?
+      user_params[:new_password].present?
     end
 
     def new_passwords_matches?
