@@ -17,7 +17,7 @@ module Users
     private
 
     def current_password_matches?
-      current_user.authenticate(user_params[:current_password]) ? true : false
+      current_user.authenticate(user_params[:current_password])
     end
 
     def new_passwords_empty?
