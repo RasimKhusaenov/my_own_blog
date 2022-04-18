@@ -49,6 +49,11 @@ en:
         success: "You've signed up!"
       not_authenticated:
         user: "You must sign in first!"
+    user:
+      password:
+        update:
+          success: "Password updated!"
+          failure: "Password doesn't match!"
   helpers:
     not_found: "Not found."
     submit:

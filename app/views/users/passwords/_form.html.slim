@@ -1,0 +1,6 @@
+= simple_form_for :user, url: url do |form|
+  = form.input :current_password, required: true
+  = form.input :new_password, required: true
+  = form.input :new_password_confirmation, required: true
+
+  = form.submit "Update", class: "btn btn-primary mt-3"
