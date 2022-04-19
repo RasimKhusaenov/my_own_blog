@@ -1,4 +1,6 @@
 = simple_form_for password_form, url: users_passwords_path, method: :patch do |form|
+  div class="alert alert-danger" role="alert"
+    = form.error :base
   = form.input :current_password, required: true
   = form.input :new_password, required: true
   = form.input :password_confirmation, required: true

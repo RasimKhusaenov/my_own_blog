@@ -14,6 +14,12 @@ class PasswordForm
     assign_attributes
   end
 
+  def validate
+    super && validate_model
+
+    errors.blank?
+  end
+
   private
 
   attr_reader :attributes, :user
@@ -32,5 +38,11 @@ class PasswordForm
 
   def assign_attributes
     attributes.each { |key, value| public_send "#{key}=", value }
+  end
+
+  def validate_model
+    user.assign_attributes(password: new_password)
+
+    errors.add(:base, user.errors.full_messages.to_sentence) if user.invalid?
   end
 end
