@@ -1,6 +1,6 @@
 module Users
   class ArticlesController < BaseController
-    expose :article, scope: -> { authorized(Article.all) }
+    expose :article
 
     def new; end
 
