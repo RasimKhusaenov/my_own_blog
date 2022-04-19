@@ -7,7 +7,7 @@ module Users
     def update
       update_password if password_form.validate
 
-      respond_with password_form, location: edit_users_passwords_path
+      respond_with password_form, location: users_me_path
     end
 
     private
