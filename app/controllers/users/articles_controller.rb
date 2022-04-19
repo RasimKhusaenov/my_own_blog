@@ -1,19 +1,24 @@
 module Users
   class ArticlesController < BaseController
     expose :article
-
-    def new; end
+    expose :articles, -> { ArticleDecorator.wrap(authorized_articles) }
 
     def create
-      article.save
-
-      respond_with article
+      if article.save
+        respond_with article
+      else
+        render "articles/index"
+      end
     end
 
     private
 
     def authorize_resource!
       authorize! article
+    end
+
+    def authorized_articles
+      authorized(Article.all)
     end
 
     def article_params

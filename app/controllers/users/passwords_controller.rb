@@ -1,9 +1,8 @@
 module Users
   class PasswordsController < BaseController
-    expose :password_form, :fetch_password_form
+    expose :password_form, :build_password_form
 
-    def edit
-    end
+    def edit; end
 
     def update
       update_password if password_form.validate
@@ -21,7 +20,7 @@ module Users
       authorize! current_user, with: Users::PasswordPolicy
     end
 
-    def fetch_password_form
+    def build_password_form
       PasswordForm.new(password_form_params, current_user)
     end
 
