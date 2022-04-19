@@ -1,11 +1,9 @@
 class SessionsController < ApplicationController
-  expose :user
+  expose :user, :fetch_user
 
   def new; end
 
   def create
-    self.user = find_user
-
     if authenticate_user
       session[:current_user_id] = user.id
 
@@ -23,8 +21,8 @@ class SessionsController < ApplicationController
 
   private
 
-  def find_user
-    User.find_by(email: user_params[:email])
+  def fetch_user
+    User.find_or_initialize_by(email: user_params[:email])
   end
 
   def authenticate_user
@@ -32,6 +30,6 @@ class SessionsController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    @user_params ||= params.fetch(:user, {})
   end
 end
