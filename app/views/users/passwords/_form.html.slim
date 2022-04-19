@@ -1,6 +1,6 @@
-= simple_form_for :user, url: url do |form|
+= simple_form_for password_form, url: users_passwords_path, method: :patch do |form|
   = form.input :current_password, required: true
   = form.input :new_password, required: true
-  = form.input :new_password_confirmation, required: true
+  = form.input :password_confirmation, required: true
 
   = form.submit "Update", class: "btn btn-primary mt-3"

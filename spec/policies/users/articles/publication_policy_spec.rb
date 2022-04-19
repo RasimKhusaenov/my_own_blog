@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Articles::PublicationPolicy do
+RSpec.describe Users::Articles::PublicationPolicy do
   describe "#create?" do
     subject { policy.apply(:create?) }
 

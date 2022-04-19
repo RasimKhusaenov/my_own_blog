@@ -1,35 +1,32 @@
 module Users
-  class PasswordsController < ApplicationController
-    skip_before_action :authorize_resource!
-    skip_verify_authorized
+  class PasswordsController < BaseController
+    expose :password_form, :fetch_password_form
 
-    def new; end
+    def edit
+    end
 
-    def create
-      if current_password_matches? && new_passwords_matches? && !new_passwords_empty?
-        current_user.update(password: user_params[:new_password])
-        redirect_to user_path, notice: I18n.t("flash.user.password.update.success")
-      else
-        redirect_to new_user_password_path, alert: I18n.t("flash.user.password.update.failure")
-      end
+    def update
+      update_password if password_form.validate
+
+      respond_with password_form, location: edit_users_passwords_path
     end
 
     private
 
-    def current_password_matches?
-      current_user.authenticate(user_params[:current_password])
+    def update_password
+      current_user.update(password: password_form_params[:new_password])
     end
 
-    def new_passwords_empty?
-      user_params[:new_password].blank? && user_params[:new_password_confirmation].blank?
+    def authorize_resource!
+      authorize! current_user, with: Users::PasswordPolicy
     end
 
-    def new_passwords_matches?
-      user_params[:new_password] == user_params[:new_password_confirmation]
+    def fetch_password_form
+      PasswordForm.new(password_form_params, current_user)
     end
 
-    def user_params
-      params.require(:user).permit(:current_password, :new_password, :new_password_confirmation)
+    def password_form_params
+      params.fetch(:password_form, {}).permit(:current_password, :new_password, :password_confirmation)
     end
   end
 end

@@ -1,22 +1,19 @@
-class UsersController < ApplicationController
-  skip_before_action :authorize_resource!
-  skip_verify_authorized
-
-  expose :user
-
+class UsersController < Users::BaseController
   def show; end
 
   def edit; end
 
   def update
-    if current_user.update(user_params)
-      redirect_to user_path
-    else
-      render :edit
-    end
+    current_user.update(user_params)
+
+    respond_with current_user, location: user_path
   end
 
   private
+
+  def authorize_resource!
+    authorize! current_user
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email)
