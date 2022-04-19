@@ -15,7 +15,9 @@ class PasswordForm
   end
 
   def validate
-    super && validate_model
+    super
+
+    validate_model
 
     errors.blank?
   end
