@@ -2,7 +2,7 @@ h1 class="text-center" Articles
 
 - if allowed_to?(:create?, Article)
   div class="d-grid gap-2 mx-auto"
-    = render "form"
+    = render "articles/form"
 
 - articles.each do |article|
   = link_to article, class: "text-decoration-none"

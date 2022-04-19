@@ -38,6 +38,9 @@ RSpec/Capybara/FeatureMethods:
 RSpec/ImplicitSubject:
   EnforcedStyle: single_statement_only
 
+RSpec/ExampleLength:
+  Max: 20
+
 Style/Documentation:
   Enabled: false
 

@@ -1,7 +1,6 @@
-= simple_form_for user, url: url do |form|
+= simple_form_for user, url: users_me_path do |form|
   = form.input :first_name
   = form.input :last_name
   = form.input :email
-  = form.input :password, required: true
 
   = form.button :submit, class: "btn btn-primary mt-3"

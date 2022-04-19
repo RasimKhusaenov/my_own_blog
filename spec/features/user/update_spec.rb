@@ -4,7 +4,7 @@ RSpec.feature "Update profile" do
   include_context "when user signed in"
 
   before do
-    visit edit_user_path
+    visit edit_users_me_path
   end
 
   scenario "User updates profile with valid data" do
