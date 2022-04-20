@@ -4,6 +4,7 @@ RSpec.describe "Articles", type: :request do
   include_context "when admin signed in (controllers)"
 
   let(:valid_attributes) { { title: "Internship", content: "It's been a wonderful 3 months" } }
+  let(:article) { create(:article) }
 
   describe "GET /index" do
     it "renders an message about no articles" do
@@ -16,11 +17,10 @@ RSpec.describe "Articles", type: :request do
 
   describe "GET /show" do
     it "renders an article title" do
-      post users_articles_path, params: { article: valid_attributes }
-      get article_path(Article.last)
+      get article_path(article)
 
       expect(response).to be_successful
-      expect(response.body).to include(valid_attributes[:title])
+      expect(response.body).to include(article.title)
     end
   end
 end
