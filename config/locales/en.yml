@@ -31,24 +31,37 @@
 
 en:
   flash:
-    articles:
+    sessions:
       create:
-        success: "Article saved!"
-      publications:
-        create:
-          success: "You've published article!"
-        destroy:
-          success: "Publication of the article has been canceled!"
-    authentication:
-      sign_in:
         success: "You've signed in!"
         failure: "Wrong email or password!"
-      sign_out:
+      destroy:
         success: "You've signed out!"
-      sign_up:
+    registrations:
+      create:
         success: "You've signed up!"
-      not_authenticated:
-        user: "You must sign in first!"
+    users:
+      articles:
+        create:
+          success: "Article saved!"
+        publications:
+          create:
+            success: "You've published article!"
+          destroy:
+            success: "Publication of the article has been canceled!"
+      passwords:
+        update:
+          success: "Password updated!"
+    unauthenticated: "You must sign in first!"
+  activemodel:
+    errors:
+      models:
+        password_form:
+          attributes:
+            current_password:
+              invalid: invalid
+            password_confirmation:
+              invalid: doesn't match password
   helpers:
     not_found: "Not found."
     submit:

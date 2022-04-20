@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def administrative_role?
     admin? || superadmin?
   end
+
+  def valid_password?(password)
+    authenticate(password)
+  end
 end

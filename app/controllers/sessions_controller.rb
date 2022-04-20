@@ -1,34 +1,35 @@
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create]
-  skip_before_action :authorize_resource!
-  skip_verify_authorized
+  expose :user, :fetch_user
 
-  def new
-    @user = User.new
-  end
+  def new; end
 
   def create
-    if authenticated_user
-      session[:current_user_id] = authenticated_user.id
-      redirect_to root_path, notice: I18n.t("flash.authentication.sign_in.success")
+    if authenticate_user
+      session[:current_user_id] = user.id
+
+      respond_with user, location: root_path
     else
-      redirect_to new_session_path, flash: { alert: I18n.t("flash.authentication.sign_in.failure") }
+      redirect_to new_session_path, alert: I18n.t("flash.sessions.create.failure")
     end
   end
 
   def destroy
     session.delete(:current_user_id)
 
-    redirect_to root_path, notice: I18n.t("flash.authentication.sign_out.success")
+    redirect_to new_session_path, notice: I18n.t("flash.sessions.destroy.success")
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password)
+  def fetch_user
+    User.find_or_initialize_by(email: user_params[:email])
   end
 
-  def authenticated_user
-    @authenticated_user ||= User.find_by(email: user_params[:email])&.authenticate(user_params[:password])
+  def authenticate_user
+    user&.valid_password?(user_params[:password])
+  end
+
+  def user_params
+    @user_params ||= params.fetch(:user, {})
   end
 end

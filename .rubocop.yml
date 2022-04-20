@@ -30,6 +30,7 @@ I18n/RailsI18n/DecorateString:
 
 Metrics/BlockLength:
   Exclude:
+    - spec/forms/**/*.rb
     - spec/requests/**/*.rb
 
 RSpec/Capybara/FeatureMethods:
@@ -37,6 +38,15 @@ RSpec/Capybara/FeatureMethods:
 
 RSpec/ImplicitSubject:
   EnforcedStyle: single_statement_only
+
+RSpec/ExampleLength:
+  Max: 20
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
