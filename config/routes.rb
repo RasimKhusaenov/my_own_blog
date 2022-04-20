@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "pages/about"
+
   root to: "articles#index"
 
   get "users/articles", to: "articles#index"
