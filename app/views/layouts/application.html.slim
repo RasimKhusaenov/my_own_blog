@@ -18,7 +18,7 @@ html
       ul class="navbar-nav"
         - unless current_page?(pages_about_path)
           li class="nav-item"
-            = link_to "About me", pages_about_path, class: "nav-link active"
+            = link_to "About me", pages_about_path, class: "nav-link"
 
       ul class="navbar-nav mr-auto"
         - if current_user.present?
