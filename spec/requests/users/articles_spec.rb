@@ -1,34 +1,34 @@
 require "rails_helper"
 
 RSpec.describe "Users::Articles", type: :request do
-  let(:valid_attributes) { { title: "Internship", content: "It's been a wonderful 3 months" } }
-  let(:invalid_attributes) { { title: "", content: "" } }
+  include_context "when admin signed in (controllers)"
 
-  before do
-    post registrations_path, params: { user: attributes_for(:user) }
-    User.last.update(role: :admin)
-  end
+  let(:valid_attributes) { { title: "Internship", content: "It's been a wonderful 3 months" } }
+  let(:created_article) { Article.last }
 
   describe "POST /create" do
     context "with valid parameters" do
+      before do
+        post users_articles_path, params: { article: valid_attributes }
+      end
+
       it "creates a new article" do
-        expect { post users_articles_path, params: { article: valid_attributes } }.to change(Article, :count).by(1)
+        expect(Article.count).to eq 1
       end
 
       it "redirects to the new article page" do
-        post users_articles_path, params: { article: valid_attributes }
-        expect(response).to redirect_to(article_path(Article.last))
+        expect(response).to redirect_to(article_path(created_article))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new article" do
-        expect { post users_articles_path, params: { article: invalid_attributes } }.to change(Article, :count).by(0)
-      end
+      let(:invalid_attributes) { { title: "", content: "" } }
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "does not create a new article" do
         post users_articles_path, params: { article: invalid_attributes }
+
         expect(response).to be_successful
+        expect(Article.count).to be_zero
       end
     end
   end

@@ -1,37 +1,24 @@
 require "rails_helper"
 
 RSpec.describe "Users::Me", type: :request do
-  let(:valid_attributes) { { first_name: "Rasim", email: "rasim.khusaenov@flatstack.dev", password: "101" } }
-  let(:invalid_attributes) { { first_name: "Rasim", email: "", password: "101" } }
+  include_context "when user signed in (controllers)"
 
   describe "GET /show" do
-    before do
-      post registrations_path, params: { user: valid_attributes }
-      get users_me_path
-    end
-
-    it "renders a successful response" do
-      expect(response).to be_successful
-    end
-
     it "renders a user email" do
-      expect(response.body).to include(valid_attributes[:email])
+      get users_me_path
+      expect(response).to be_successful
+      expect(response.body).to include(user.email)
     end
   end
 
   describe "GET /edit" do
     it "render a successful response" do
-      post registrations_path, params: { user: valid_attributes }
       get edit_users_me_path
       expect(response).to be_successful
     end
   end
 
   describe "PATCH /update" do
-    before do
-      post registrations_path, params: { user: valid_attributes }
-    end
-
     context "with valid parameters" do
       let(:new_attributes) { { last_name: "Khusaenov" } }
 
@@ -40,7 +27,7 @@ RSpec.describe "Users::Me", type: :request do
       end
 
       it "updates the user" do
-        expect(User.last.last_name).to eq("Khusaenov")
+        expect(User.last.last_name).to eq(new_attributes[:last_name])
       end
 
       it "redirects to the user profile" do
@@ -49,11 +36,10 @@ RSpec.describe "Users::Me", type: :request do
     end
 
     context "with invalid parameters" do
-      before do
-        patch users_me_path, params: { user: invalid_attributes }
-      end
+      let(:invalid_attributes) { { first_name: "" } }
 
       it "renders a successful response (i.e. to display the 'edit' template)" do
+        patch users_me_path, params: { user: invalid_attributes }
         expect(response).to be_successful
       end
     end

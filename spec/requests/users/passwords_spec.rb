@@ -1,13 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Users::Passwords", type: :request do
-  let(:valid_attributes) { { current_password: "1", new_password: "2", password_confirmation: "2" } }
-  let(:invalid_attributes) { { current_password: "" } }
+  include_context "when user signed in (controllers)"
 
-  before do
-    post registrations_path, params: { user: attributes_for(:user) }
-    User.last.update(password: "1")
-  end
+  let(:valid_attributes) { { current_password: user.password, new_password: "2", password_confirmation: "2" } }
 
   describe "GET /edit" do
     it "render a successful response" do
@@ -18,8 +14,6 @@ RSpec.describe "Users::Passwords", type: :request do
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) { { last_name: "Khusaenov" } }
-
       before do
         patch users_passwords_path, params: { password_form: { **valid_attributes } }
       end
@@ -34,6 +28,8 @@ RSpec.describe "Users::Passwords", type: :request do
     end
 
     context "with invalid parameters" do
+      let(:invalid_attributes) { { current_password: "" } }
+
       it "renders a successful response (i.e. to display the 'edit' template)" do
         patch users_passwords_path, params: { password_form: { **invalid_attributes } }
         expect(response).to be_successful
