@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Authentication
 
+  include Pagy::Backend
+
   self.responder = ApplicationResponder
   respond_to :html
 
