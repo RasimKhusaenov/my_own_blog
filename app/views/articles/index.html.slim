@@ -25,4 +25,4 @@ h1 class="text-center" Articles
       p class="card-text"
         | But it is not.
 
-== pagy_nav(@pagy)
+== render "shared/bootstrap_nav.html.slim", pagy: paginator if paginator.pages > 1

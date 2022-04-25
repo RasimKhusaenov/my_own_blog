@@ -1,0 +1,26 @@
+- link = pagy_link_proc(pagy, link_extra: 'class="page-link"')
+
+nav class="pagy-bootstrap-nav" role="navigation" aria-label="pager"
+  ul class="pagination justify-content-center"
+    - if pagy.prev
+      li.page-item.prev == link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="previous"')
+    - else
+      li.page-item.prev.disabled
+        a.page-link href="#" == pagy_t('pagy.nav.prev')
+
+    - pagy.series.each do |item|
+      - if item.is_a?(Integer)
+        li.page-item == link.call(item)
+
+      - elsif item.is_a?(String)
+        li.page-item.active == link.call(item)
+
+      - elsif item == :gap
+        li.page-item.disabled.gap
+          a.page-link href="#" == pagy_t('pagy.nav.gap')
+
+    - if pagy.next
+      li.page-item.next == link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next"')
+    - else
+      li.page-item.next.disabled
+        a.page-link href="#" == pagy_t('pagy.nav.next')

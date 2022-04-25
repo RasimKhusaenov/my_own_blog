@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
+  include Pagination
+
   expose :article, scope: -> { authorized_articles }
-  expose :articles, -> { ArticleDecorator.wrap(paginated_articles) }
+  expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
   def index; end
 
@@ -10,10 +12,5 @@ class ArticlesController < ApplicationController
 
   def authorized_articles
     authorized(Article.all)
-  end
-
-  def paginated_articles
-    @pagy, articles = pagy(authorized_articles)
-    articles
   end
 end
