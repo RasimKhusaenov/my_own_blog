@@ -11,6 +11,6 @@ class ArticlesController < ApplicationController
   private
 
   def authorized_articles
-    authorized(Article.all)
+    authorized(Article.order(created_at: :desc))
   end
 end
