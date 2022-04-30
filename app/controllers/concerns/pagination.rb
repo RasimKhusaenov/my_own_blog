@@ -11,8 +11,6 @@ module Pagination
       collection
     end
 
-    def paginator
-      @paginator
-    end
+    attr_reader :paginator
   end
 end
