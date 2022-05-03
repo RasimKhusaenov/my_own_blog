@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   expose :article, scope: -> { authorized_articles }
-  expose :articles, -> { ArticleDecorator.wrap(authorized_articles) }
+  expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
   def index; end
 
@@ -9,6 +9,6 @@ class ArticlesController < ApplicationController
   private
 
   def authorized_articles
-    authorized(Article.all)
+    authorized(Article.order(created_at: :desc))
   end
 end

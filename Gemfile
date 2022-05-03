@@ -9,6 +9,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "decent_exposure", "~> 3.0"
 gem "enumerize"
 gem "jbuilder", "~> 2.7"
+gem "pagy"
 gem "pg"
 gem "puma", ">= 5.6.4"
 gem "rails", "~> 6.0.4.7"

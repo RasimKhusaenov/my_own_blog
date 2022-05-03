@@ -1,7 +1,7 @@
 module Users
   class ArticlesController < BaseController
     expose :article
-    expose :articles, -> { ArticleDecorator.wrap(authorized_articles) }
+    expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
     def create
       if article.save
