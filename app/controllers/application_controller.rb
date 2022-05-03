@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include Pagination
 
   self.responder = ApplicationResponder
   respond_to :html
