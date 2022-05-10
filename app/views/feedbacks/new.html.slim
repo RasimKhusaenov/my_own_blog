@@ -3,7 +3,7 @@ h1 class="text-center" Feedback
 = simple_form_for(feedback, url: feedback_path) do |form|
   legend = t(".form_legend")
 
-  = form.input :author, label: t(".form_author")
+  = form.input :author
   = form.input :email
   = form.input :message, as: :text
 
