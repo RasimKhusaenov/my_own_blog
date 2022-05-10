@@ -16,9 +16,10 @@ html
         | My Own Blog
 
       ul class="navbar-nav"
-        - unless current_page?(pages_about_path)
-          li class="nav-item"
-            = link_to "About me", pages_about_path, class: "nav-link"
+        li class="nav-item"
+          = link_to "About me", pages_about_path, class: "nav-link #{yield :pages_about_path}"
+        li class="nav-item"
+          = link_to "Contact me", new_feedback_path, class: "nav-link #{yield :new_feedback_path}"
 
       ul class="navbar-nav mr-auto"
         - if current_user.present?

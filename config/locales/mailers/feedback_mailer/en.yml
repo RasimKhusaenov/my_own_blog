@@ -1,0 +1,5 @@
+en:
+  feedback_mailer:
+    send_feedback:
+      subject: Feedback received
+      title: Feedback from %{name}

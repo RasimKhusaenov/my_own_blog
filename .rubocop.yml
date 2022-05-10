@@ -42,6 +42,9 @@ RSpec/ImplicitSubject:
 RSpec/ExampleLength:
   Max: 20
 
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
 RSpec/MultipleExpectations:
   Max: 2
 
