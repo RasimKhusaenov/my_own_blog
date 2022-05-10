@@ -8,7 +8,7 @@ RSpec.describe "Feedback", type: :request do
       get new_feedback_path
 
       expect(response).to be_successful
-      expect(response.body).to include("Write down what's bothering you.")
+      expect(CGI.unescapeHTML(response.body)).to include("Write down what's bothering you.")
     end
   end
 

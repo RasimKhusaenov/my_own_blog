@@ -3,5 +3,9 @@ FactoryBot.define do
     author { Faker::Name.first_name }
     email { Faker::Internet.email }
     message { Faker::Lorem.paragraph }
+
+    trait :for_form do
+      add_attribute(:name) { author }
+    end
   end
 end

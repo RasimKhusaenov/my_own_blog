@@ -1,16 +1,34 @@
 require "rails_helper"
 
 RSpec.feature "Send Feedback" do
-  let(:feedback_attributes) { attributes_for(:feedback) }
+  include ActiveJob::TestHelper
 
-  scenario "User creates feedback" do
+  let(:feedback_attributes) { attributes_for(:feedback, :for_form) }
+
+  before do
+    ActiveJob::Base.queue_adapter = :test
+
     visit new_feedback_path
 
-    feedback_attributes[:name] = feedback_attributes.delete :author
-    fill_form :feedback, feedback_attributes
+    fill_form :feedback, feedback_attributes.except(:author)
 
-    click_button "Send"
+    perform_enqueued_jobs do
+      click_button "Send"
+    end
 
+    open_email("rasim.khusaenov@flatstack.dev")
+  end
+
+  scenario "checking letter subject" do
+    expect(current_email.subject).to eq("Feedback received")
+  end
+
+  scenario "checking letter body" do
+    expect(current_email).to have_content("Feedback from #{feedback_attributes[:author]}")
+    expect(current_email).to have_content(feedback_attributes[:message])
+  end
+
+  scenario "viewing success sending message" do
     expect(page).to have_content("Feedback was successfully sent!")
   end
 end
