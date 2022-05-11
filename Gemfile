@@ -15,6 +15,7 @@ gem "puma", ">= 5.6.4"
 gem "rails", "~> 6.0.4.7"
 gem "responders"
 gem "sass-rails", ">= 6"
+gem "sidekiq", "~> 6.4"
 gem "simple_form"
 gem "slim-rails"
 gem "turbolinks", "~> 5"
@@ -22,6 +23,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "~> 4.0"
 
 group :test do
+  gem "capybara-email"
   gem "formulaic"
   gem "simplecov", require: false
 end
@@ -29,10 +31,10 @@ end
 group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit", require: false
-  gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "capybara", require: false
   gem "factory_bot_rails"
   gem "faker"
+  gem "pry"
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-i18n", require: false
@@ -45,6 +47,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   gem "listen", "~> 3.2"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"

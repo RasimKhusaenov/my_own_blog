@@ -36,5 +36,9 @@ module MyOwnBlog
     config.generators.system_tests = nil
 
     config.responders.flash_keys = %i[success failure]
+
+    config.active_job.queue_adapter = :sidekiq
+
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml")]
   end
 end

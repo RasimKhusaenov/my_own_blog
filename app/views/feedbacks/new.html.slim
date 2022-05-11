@@ -1,0 +1,13 @@
+h1 class="text-center" Feedback
+
+= simple_form_for(feedback, url: feedback_path) do |form|
+  legend = t(".form_legend")
+
+  = form.input :author
+  = form.input :email
+  = form.input :message, as: :text
+
+  = form.button :submit, class: "btn btn-primary mt-3"
+
+- content_for :new_feedback_path do
+  = "active"

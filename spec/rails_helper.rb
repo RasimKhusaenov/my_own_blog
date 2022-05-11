@@ -10,6 +10,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "capybara/rails"
 require "capybara/rspec"
+require "capybara/email/rspec"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
