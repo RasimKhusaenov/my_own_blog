@@ -28,7 +28,7 @@ en:
   activemodel:
     errors:
       models:
-        password_form:
+        update_password_form:
           attributes:
             current_password:
               invalid: invalid

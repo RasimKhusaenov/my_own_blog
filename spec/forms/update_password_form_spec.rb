@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PasswordForm do
+RSpec.describe UpdatePasswordForm do
   subject(:form) { described_class.new(password_params, user) }
 
   let(:user) { create(:user, password: "1") }

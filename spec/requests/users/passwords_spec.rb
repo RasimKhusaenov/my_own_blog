@@ -15,7 +15,7 @@ RSpec.describe "Users::Passwords", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       before do
-        patch users_passwords_path, params: { password_form: { **valid_attributes } }
+        patch users_passwords_path, params: { update_password_form: { **valid_attributes } }
       end
 
       it "updates the user's password" do
@@ -31,7 +31,7 @@ RSpec.describe "Users::Passwords", type: :request do
       let(:invalid_attributes) { { current_password: "" } }
 
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        patch users_passwords_path, params: { password_form: { **invalid_attributes } }
+        patch users_passwords_path, params: { update_password_form: { **invalid_attributes } }
         expect(response).to be_successful
       end
     end
