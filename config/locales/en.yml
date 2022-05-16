@@ -24,6 +24,13 @@ en:
       passwords:
         update:
           success: "Password updated!"
+    password_resets:
+      create:
+        success: "Password recovery instructions were sent if that account exists"
+      edit:
+        failure: "Your token has expired. Please try again."
+      update:
+        success: "Password reset!"
     unauthenticated: "You must sign in first!"
   activemodel:
     errors:
@@ -32,6 +39,10 @@ en:
           attributes:
             current_password:
               invalid: invalid
+            password_confirmation:
+              invalid: doesn't match password
+        reset_password_form:
+          attributes:
             password_confirmation:
               invalid: doesn't match password
   helpers:

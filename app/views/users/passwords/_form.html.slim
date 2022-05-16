@@ -2,6 +2,7 @@
   - if password_form.errors[:base].any?
     .alert.alert-danger role="alert"
       = form.error :base
+
   = form.input :current_password, required: true
   = form.input :new_password, required: true
   = form.input :password_confirmation, required: true
