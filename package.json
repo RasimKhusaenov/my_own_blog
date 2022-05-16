@@ -2,8 +2,8 @@
   "name": "my_own_blog",
   "private": true,
   "dependencies": {
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
+    "@rails/activestorage": "^6.1.0",
+    "@rails/ujs": "^6.1.0",
     "@rails/webpacker": "4.3.0",
     "sass": "^1.49.9",
     "turbolinks": "^5.2.0"

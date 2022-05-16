@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe PasswordForm do
+RSpec.describe UpdatePasswordForm do
   subject(:form) { described_class.new(password_params, user) }
 
   let(:user) { create(:user, password: "1") }
@@ -39,7 +39,7 @@ RSpec.describe PasswordForm do
     end
 
     context "when empty new password" do
-      let(:expected_error_data) { ["New password can't be blank"] }
+      let(:expected_error_data) { ["New password can't be blank", "Password confirmation can't be blank"] }
       let(:new_password) { "" }
 
       it "validates resource" do

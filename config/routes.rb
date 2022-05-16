@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resource :session, only: %i[new create destroy]
   resources :registrations, only: %i[new create]
+  resource :password_reset, only: %i[new create edit update]
 
   resources :articles, only: %i[index show]
   resource :feedback, only: %i[new create]

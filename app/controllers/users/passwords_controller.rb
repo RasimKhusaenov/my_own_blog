@@ -21,11 +21,11 @@ module Users
     end
 
     def build_password_form
-      PasswordForm.new(password_form_params, current_user)
+      UpdatePasswordForm.new(password_form_params, current_user)
     end
 
     def password_form_params
-      params.fetch(:password_form, {}).permit(:current_password, :new_password, :password_confirmation)
+      params.fetch(:update_password_form, {}).permit(:current_password, :new_password, :password_confirmation)
     end
   end
 end

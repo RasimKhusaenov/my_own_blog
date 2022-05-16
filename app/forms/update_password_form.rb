@@ -1,10 +1,9 @@
-class PasswordForm
+class UpdatePasswordForm
   include ActiveModel::Model
 
   attr_accessor :current_password, :new_password, :password_confirmation
 
-  validates :current_password, presence: true
-  validates :new_password, presence: true
+  validates :current_password, :new_password, :password_confirmation, presence: true
   validate :check_current_password, :check_password_confirmation
 
   def initialize(attributes, user)

@@ -1,0 +1,9 @@
+en:
+  user_mailer:
+    password_reset:
+      subject: Password reset requested
+      title: Password reset was requested for your account
+      greetings: Hello, %{name}!
+      content: Someone requested a password reset for account with email %{email}.
+      follow_link: Follow this link to reset your password.
+      expires_in: It will expire automatically in %{duration}.
