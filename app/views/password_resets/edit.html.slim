@@ -1,7 +1,7 @@
 h1 Reset your password
 
-= simple_form_for password_form, url: password_reset_path(token: params[:token]), method: :patch do |form|
-  - if password_form.errors[:base].any?
+= simple_form_for reset_password_form, url: password_reset_path(token: params[:token]), method: :patch do |form|
+  - if reset_password_form.errors[:base].any?
     div class="alert alert-danger mb-3" role="alert"
       = form.error :base
 

@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  expose :password_form, :build_password_form
+  expose :reset_password_form
 
   def new; end
 
@@ -18,9 +18,9 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    update_password if password_form.validate
+    update_password if reset_password_form.validate
 
-    respond_with password_form, location: new_session_path
+    respond_with reset_password_form, location: new_session_path
   end
 
   private
@@ -28,14 +28,10 @@ class PasswordResetsController < ApplicationController
   def update_password
     user = User.find_signed!(params[:token], purpose: :password_reset)
 
-    user.update(password: password_form_params[:new_password])
+    user.update(password: reset_password_form_params[:new_password])
   end
 
-  def build_password_form
-    ResetPasswordForm.new(password_form_params, current_user)
-  end
-
-  def password_form_params
+  def reset_password_form_params
     params.fetch(:reset_password_form, {}).permit(:new_password, :password_confirmation)
   end
 end

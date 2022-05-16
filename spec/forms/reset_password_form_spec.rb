@@ -1,9 +1,8 @@
 require "rails_helper"
 
 RSpec.describe ResetPasswordForm do
-  subject(:form) { described_class.new(password_params, user) }
+  subject(:form) { described_class.new(password_params) }
 
-  let(:user) { create :user }
   let(:new_password) { "NEW" }
   let(:password_confirmation) { new_password }
   let(:password_params) do

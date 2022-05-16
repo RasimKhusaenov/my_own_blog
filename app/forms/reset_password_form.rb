@@ -6,9 +6,8 @@ class ResetPasswordForm
   validates :new_password, presence: true
   validate :check_password_confirmation
 
-  def initialize(attributes, user)
+  def initialize(attributes)
     @attributes = attributes
-    @user = user
 
     assign_attributes
   end
@@ -21,7 +20,7 @@ class ResetPasswordForm
 
   private
 
-  attr_reader :attributes, :user
+  attr_reader :attributes
 
   def check_password_confirmation
     return if new_password == password_confirmation
