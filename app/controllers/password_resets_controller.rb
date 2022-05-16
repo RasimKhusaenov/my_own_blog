@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
 
     UserMailer.password_reset(user).deliver_later if user.present?
 
-    redirect_to root_path, notice: I18n.t("flash.password_resets.create.success")
+    respond_with UserMailer, location: root_path
   end
 
   def edit
