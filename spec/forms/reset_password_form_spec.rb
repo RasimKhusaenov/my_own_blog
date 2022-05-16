@@ -16,7 +16,7 @@ RSpec.describe ResetPasswordForm do
 
   context "when invalid params" do
     context "when empty new password" do
-      let(:expected_error_data) { ["New password can't be blank"] }
+      let(:expected_error_data) { ["New password can't be blank", "Password confirmation can't be blank"] }
       let(:new_password) { "" }
 
       it "validates resource" do

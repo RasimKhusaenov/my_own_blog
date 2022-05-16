@@ -3,19 +3,13 @@ class ResetPasswordForm
 
   attr_accessor :new_password, :password_confirmation
 
-  validates :new_password, presence: true
+  validates :new_password, :password_confirmation, presence: true
   validate :check_password_confirmation
 
   def initialize(attributes)
     @attributes = attributes
 
     assign_attributes
-  end
-
-  def validate
-    super
-
-    errors.blank?
   end
 
   private

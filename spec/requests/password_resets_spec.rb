@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "PasswordResetss", type: :request do
+RSpec.describe "PasswordResets", type: :request do
   let(:valid_attributes) { { new_password: "NEW", password_confirmation: "NEW" } }
   let(:token) { user.signed_id(purpose: :password_reset, expires_in: User::TOKEN_EXPIRATION_TIME) }
   let(:user) { create :user }

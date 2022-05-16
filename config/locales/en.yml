@@ -53,3 +53,5 @@ en:
         update: "Update"
       feedback:
         create: "Send"
+      reset_password_form:
+        create: "Reset password"

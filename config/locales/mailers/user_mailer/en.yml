@@ -2,7 +2,6 @@ en:
   user_mailer:
     password_reset:
       subject: Password reset requested
-      title: Feedback from %{name}
       title: Password reset was requested for your account
       greetings: Hello, %{name}!
       content: Someone requested a password reset for account with email %{email}.
