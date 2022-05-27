@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   TOKEN_EXPIRATION_TIME = 15.minutes
 
+  has_many :articles, dependent: :nullify
+
   has_secure_password
 
   enumerize :role, in: %i[reader admin superadmin], scope: :shallow, predicates: true
