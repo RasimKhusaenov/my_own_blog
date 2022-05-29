@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_05_27_201132) do
     t.boolean "published", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", default: 1, null: false
+    t.bigint "user_id"
     t.bigint "company_id"
     t.index ["company_id"], name: "index_articles_on_company_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
