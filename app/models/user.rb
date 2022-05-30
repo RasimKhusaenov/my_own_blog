@@ -4,7 +4,7 @@ class User < ApplicationRecord
   TOKEN_EXPIRATION_TIME = 15.minutes
 
   has_many :company_members, dependent: :destroy
-  has_many :articles, dependent: :nullify
+  has_many :articles, dependent: :destroy
 
   has_secure_password
 
