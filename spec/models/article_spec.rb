@@ -1,7 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Article, type: :model do
-  subject(:article) { described_class.new(title: "Internship", content: "It's been a wonderful 3 months") }
+  subject(:article) { described_class.new(title: "Internship", content: "It's been a wonderful 3 months", user: user) }
+
+  let(:user) { create :user }
 
   describe "validations" do
     it "is valid with valid attributes" do

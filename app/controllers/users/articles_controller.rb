@@ -22,7 +22,7 @@ module Users
     end
 
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content).merge(user: current_user)
     end
   end
 end
