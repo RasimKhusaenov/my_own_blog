@@ -21,6 +21,9 @@ en:
             success: "You've published article!"
           destroy:
             success: "Publication of the article has been canceled!"
+      companies:
+        create:
+          success: "Company saved!"
       passwords:
         update:
           success: "Password updated!"

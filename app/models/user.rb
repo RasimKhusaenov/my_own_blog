@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :company_members, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :companies, through: :company_members
 
   has_secure_password
 

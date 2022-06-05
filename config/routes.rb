@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :feedback, only: %i[new create]
 
   namespace :users do
+    resource :company, only: %i[new create]
     resource :me, only: %i[show edit update], controller: "me"
     resource :passwords, only: %i[edit update]
     resources :articles, only: %i[create] do
