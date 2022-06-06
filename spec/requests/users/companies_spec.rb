@@ -6,9 +6,27 @@ RSpec.describe "Companies", type: :request do
   let(:valid_attributes) { { official_name: "Khusaenov Industries" } }
 
   describe "GET /new" do
-    it "renders a successful response" do
-      get new_users_company_path
-      expect(response).to be_successful
+    context "when user doesn't have company" do
+      it "renders a successful response" do
+        get new_users_company_path
+        expect(response).to be_successful
+      end
+    end
+
+    context "when user have company" do
+      before do
+        create :company_member, user: user
+        get new_users_company_path
+      end
+
+      it "redirects to the blog page" do
+        expect(response).to redirect_to(root_path)
+      end
+
+      it "shows reason" do
+        follow_redirect!
+        expect(response.body).to include("Not Authorized")
+      end
     end
   end
 
