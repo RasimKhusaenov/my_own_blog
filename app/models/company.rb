@@ -3,5 +3,5 @@ class Company < ApplicationRecord
   has_many :articles, dependent: :nullify
 
   validates :official_name, presence: true, uniqueness: true
-  validates :unofficial_name, uniqueness: true, allow_nil: true
+  validates :unofficial_name, uniqueness: true, allow_blank: true
 end

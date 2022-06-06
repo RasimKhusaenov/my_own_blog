@@ -10,7 +10,7 @@ RSpec.feature "Create company" do
 
     fill_form :company, **company_attributes
 
-    click_button "Create Company"
+    click_button "Create"
 
     expect(page).to have_content("Company saved!")
   end

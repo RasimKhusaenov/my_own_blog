@@ -5,13 +5,9 @@ module Users
     def new; end
 
     def create
-      result = CreateCompany.call(company_params: company_params, user: current_user)
+      self.company = CreateCompany.call(company_params: company_params, user: current_user).company
 
-      if result.success?
-        respond_with company, location: root_path
-      else
-        redirect_to new_users_company_path
-      end
+      respond_with company, location: root_path
     end
 
     private

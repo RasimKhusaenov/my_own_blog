@@ -33,7 +33,7 @@ RSpec.describe "Companies", type: :request do
       it "doesn't create a new company" do
         post users_company_path, params: { company: invalid_attributes }
 
-        expect(response).to redirect_to(new_users_company_path)
+        expect(response).to be_successful
         expect(Company.count).to be_zero
       end
     end

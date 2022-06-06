@@ -51,6 +51,8 @@ en:
   helpers:
     not_found: "Not found."
     submit:
+      company:
+        create: "Create"
       user:
         create: "Sign Up"
         update: "Update"
