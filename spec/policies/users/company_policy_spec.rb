@@ -11,9 +11,17 @@ RSpec.describe Users::CompanyPolicy do
       it { is_expected.to be_truthy }
     end
 
-    context "when user have company" do
+    context "when user writer in some company" do
       before do
-        create :company_member, user: current_user
+        create :company_member, user: current_user, role: :writer
+      end
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "when user have his own company" do
+      before do
+        create :company_member, user: current_user, role: :owner
       end
 
       it { is_expected.to be_falsey }
