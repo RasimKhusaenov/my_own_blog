@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CreatesCompany::CreateOwner do
+RSpec.describe CreatesCompany::SetupOwner do
   include_context "with interactor"
 
   let(:initial_context) { { company: company, user: user } }

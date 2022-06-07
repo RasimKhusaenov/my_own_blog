@@ -1,5 +1,5 @@
 module CreatesCompany
-  class CreateOwner
+  class SetupOwner
     include Interactor
 
     delegate :company, :user, to: :context
