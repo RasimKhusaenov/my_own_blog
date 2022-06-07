@@ -20,7 +20,6 @@ RSpec.describe "Companies", type: :request do
       end
 
       it "renders a successful response" do
-        get new_users_company_path
         expect(response).to be_successful
       end
     end
