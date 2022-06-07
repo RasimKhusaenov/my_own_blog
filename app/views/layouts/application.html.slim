@@ -14,8 +14,8 @@ html style="position: relative; min-height: 100%; padding-bottom:160px;"
   / TODO: Move styles
   body style="margin-bottom: 140px;"
     nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
-      a href="#{root_path}" class="navbar-brand"
-        = current_user&.companies&.first&.official_name || "My Own Blog"
+      / TODO: Show current user company
+      a href="#{root_path}" class="navbar-brand" My Own Blog
 
       ul class="navbar-nav mr-auto"
         - if current_user.present?

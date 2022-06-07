@@ -24,6 +24,7 @@ en:
       companies:
         create:
           success: "Company saved!"
+          failure: "Company can't be created."
       passwords:
         update:
           success: "Password updated!"

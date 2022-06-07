@@ -5,18 +5,19 @@ module CreatesCompany
     delegate :company_params, to: :context
 
     def call
-      raise_error unless company.save
       context.company = company
+
+      raise_error if company.invalid?
     end
 
     private
 
     def company
-      @company ||= Company.new(company_params)
+      @company ||= Company.create(company_params)
     end
 
     def raise_error
-      context.fail!(company: company)
+      context.fail!(error: I18n.t("flash.users.company.failure"))
     end
   end
 end

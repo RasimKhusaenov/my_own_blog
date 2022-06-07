@@ -13,9 +13,21 @@ RSpec.describe "Companies", type: :request do
       end
     end
 
-    context "when user have company" do
+    context "when user writer in some company" do
       before do
-        create :company_member, user: user
+        create :company_member, user: user, role: :writer
+        get new_users_company_path
+      end
+
+      it "renders a successful response" do
+        get new_users_company_path
+        expect(response).to be_successful
+      end
+    end
+
+    context "when user have his own company" do
+      before do
+        create :company_member, user: user, role: :owner
         get new_users_company_path
       end
 
