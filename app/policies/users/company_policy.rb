@@ -1,7 +1,7 @@
 module Users
   class CompanyPolicy < ApplicationPolicy
     def create?
-      user.company_members.where(role: :owner).blank?
+      user.own_company.blank?
     end
   end
 end

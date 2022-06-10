@@ -15,7 +15,7 @@ module CreatesCompany
     end
 
     def raise_error
-      context.fail!(error: I18n.t("flash.users.company.failure"))
+      context.fail!(error: I18n.t("flash.users.companies.create.failure"))
     end
   end
 end

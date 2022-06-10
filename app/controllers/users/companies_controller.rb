@@ -5,9 +5,13 @@ module Users
     def new; end
 
     def create
-      self.company = CreateCompany.call(company_params: company_params, user: current_user).company
+      self.company = create_company.company
 
-      respond_with company, location: root_path
+      if create_company.success?
+        respond_with company, location: root_path
+      else
+        respond_with company, alert: create_company.error
+      end
     end
 
     private
@@ -18,6 +22,10 @@ module Users
 
     def company_params
       params.require(:company).permit(:official_name, :unofficial_name)
+    end
+
+    def create_company
+      @create_company ||= CreateCompany.call(company_params: company_params, user: current_user)
     end
   end
 end
