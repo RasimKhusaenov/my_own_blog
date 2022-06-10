@@ -20,7 +20,7 @@ RSpec.describe "Articles", type: :request do
       get article_path(article)
 
       expect(response).to be_successful
-      expect(response.body).to include(article.title)
+      expect(CGI.unescapeHTML(response.body)).to include(article.title)
     end
   end
 end

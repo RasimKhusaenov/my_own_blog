@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   has_many :company_members, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :companies, through: :company_members
+
+  has_one :owner_relationship,
+          -> { where(role: :owner) }, class_name: "CompanyMember", inverse_of: false, dependent: :destroy
+  has_one :own_company, through: :owner_relationship, class_name: "Company", source: :company
 
   has_secure_password
 
