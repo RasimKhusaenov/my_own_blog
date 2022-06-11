@@ -25,7 +25,7 @@ RSpec.describe RegisterUser do
       expect { interactor.run }.to change(CompanyMember, :count).by(1)
     end
 
-    it "adds user to company as owner" do
+    it "adds user to company as writer" do
       interactor.run
 
       role = CompanyMember.find_by(company: company, user: context.user).role
