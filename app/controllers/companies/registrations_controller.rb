@@ -7,9 +7,13 @@ module Companies
 
     def create
       self.user = register_user.user
-      session[:current_user_id] = user.id
 
-      respond_with user, location: root_path
+      if register_user.success?
+        session[:current_user_id] = user.id
+        respond_with user, location: root_path
+      else
+        respond_with user, alert: register_user.error
+      end
     end
 
     private
