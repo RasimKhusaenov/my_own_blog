@@ -8,6 +8,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "decent_exposure", "~> 3.0"
 gem "enumerize"
+gem "friendly_id"
 gem "interactor"
 gem "jbuilder", "~> 2.7"
 gem "pagy"
