@@ -1,5 +1,9 @@
 en:
   flash:
+    companies:
+      registrations:
+        create:
+          success: "You've signed up!"
     feedbacks:
       create:
         success: "Feedback was successfully sent!"

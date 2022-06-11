@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :articles, only: %i[index show]
   resource :feedback, only: %i[new create]
+  resources :companies, only: %i[] do
+    resources :registrations, only: %i[new create], module: :companies
+  end
 
   namespace :users do
     resource :company, only: %i[new create]
