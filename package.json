@@ -1,19 +1,8 @@
 {
   "name": "my_own_blog",
-  "private": true,
-  "dependencies": {
-    "@rails/activestorage": "^6.1.0",
-    "@rails/ujs": "^6.1.0",
-    "@rails/webpacker": "4.3.0",
-    "sass": "^1.49.9",
-    "turbolinks": "^5.2.0"
-  },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^4.7.4"
-  },
-  "engines": {
-    "npm": "6.14.16",
-    "node": "14.19.0"
-  }
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:RasimKhusaenov/my_own_blog.git",
+  "author": "RasimKhusaenov <rasim.khusaenov@flatstack.dev>",
+  "license": "MIT"
 }
