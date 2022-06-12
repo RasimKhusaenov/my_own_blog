@@ -4,7 +4,7 @@ en:
       registrations:
         create:
           success: "You've signed up!"
-          failure: "User can't be signed up."
+          failure: "Something went wrong."
     feedbacks:
       create:
         success: "Feedback was successfully sent!"
