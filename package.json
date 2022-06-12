@@ -4,5 +4,16 @@
   "main": "index.js",
   "repository": "git@github.com:RasimKhusaenov/my_own_blog.git",
   "author": "RasimKhusaenov <rasim.khusaenov@flatstack.dev>",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@rails/activestorage": "^6.1.0",
+    "@rails/ujs": "^6.1.0",
+    "@rails/webpacker": "4.3.0",
+    "sass": "^1.49.9",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^4.7.4"
+  }
 }
