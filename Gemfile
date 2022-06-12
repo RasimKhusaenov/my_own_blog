@@ -21,7 +21,7 @@ gem "simple_form"
 gem "slim-rails"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-gem "webpacker", "~> 4.0"
+gem "webpacker", "5.4.3"
 
 group :test do
   gem "capybara-email"
