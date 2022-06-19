@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -e
+
+bin/rubocop --parallel
+bin/brakeman --quiet --skip-libs --no-pager --exit-on-warn
+
+bin/bundle-audit update
+bin/bundle-audit
