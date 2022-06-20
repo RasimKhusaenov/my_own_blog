@@ -1,5 +1,10 @@
 en:
   flash:
+    companies:
+      registrations:
+        create:
+          success: "You've signed up!"
+          failure: "Something went wrong."
     feedbacks:
       create:
         success: "Feedback was successfully sent!"

@@ -1,5 +1,5 @@
 module Users
-  class CompaniesController < BaseController
+  class CompaniesController < Users::BaseController
     expose :company
 
     def new; end

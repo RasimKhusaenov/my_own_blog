@@ -13,6 +13,7 @@ AllCops:
     - bin/**/*
     - config/environments/**/*.rb
     - config/initializers/simple_form*.rb
+    - config/initializers/friendly_id.rb
     - db/**/*
     - node_modules/**/*
     - vendor/**/*
