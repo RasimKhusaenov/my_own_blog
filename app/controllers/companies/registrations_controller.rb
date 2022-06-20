@@ -1,5 +1,5 @@
 module Companies
-  class RegistrationsController < BaseController
+  class RegistrationsController < Companies::BaseController
     expose :company, find_by: :slug
     expose :user
 
