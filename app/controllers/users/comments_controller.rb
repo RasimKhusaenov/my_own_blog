@@ -1,14 +1,13 @@
 module Users
   class CommentsController < Users::BaseController
-    expose :comment
+    expose :article
+    expose :comment, parent: :article
 
     def create
-      self.comment = create_comment.comment
-
       if create_comment.success?
-        respond_with comment, location: comment.article
+        respond_with comment, location: article
       else
-        redirect_to article_path(comment.article), alert: create_comment.error
+        redirect_to article_path(article), alert: create_comment.error
       end
     end
 
@@ -19,16 +18,11 @@ module Users
     end
 
     def comment_params
-      params.require(:comment).permit(:content).merge(
-        {
-          user: current_user,
-          article_id: params.require(:article_id)
-        }
-      )
+      params.require(:comment).permit(:content).merge(user: current_user)
     end
 
     def create_comment
-      @create_comment ||= CreateComment.call(comment_params: comment_params)
+      @create_comment ||= CreateComment.call(comment: comment)
     end
   end
 end

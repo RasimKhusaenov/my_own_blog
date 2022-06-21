@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   expose :article, scope: -> { authorized_articles }
   expose :comment, -> { Comment.new(article: article) }
-  expose :comments, from: :article
+  expose :comments, -> { article.comments.includes(:user) }
   expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
   def index; end

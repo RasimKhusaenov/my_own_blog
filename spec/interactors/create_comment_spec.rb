@@ -4,15 +4,9 @@ RSpec.describe CreateComment do
   include_context "with interactor"
 
   describe ".call" do
-    let(:initial_context) { { comment_params: comment_params } }
+    let(:initial_context) { { comment: comment } }
 
-    let(:comment_params) do
-      {
-        content: "Rasim was here",
-        article_id: create(:article).id,
-        user_id: create(:user).id
-      }
-    end
+    let(:comment) { build :comment, content: "Rasim was here" }
     let(:expected_comment_params) do
       {
         content: "Rasim was here"

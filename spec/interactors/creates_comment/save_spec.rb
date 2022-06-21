@@ -1,17 +1,11 @@
 require "rails_helper"
 
-RSpec.describe CreatesComment::Create do
+RSpec.describe CreatesComment::Save do
   include_context "with interactor"
 
-  let(:initial_context) { { comment_params: comment_params } }
+  let(:initial_context) { { comment: comment } }
 
-  let(:comment_params) do
-    {
-      content: "Rasim was here",
-      article_id: create(:article).id,
-      user_id: create(:user).id
-    }
-  end
+  let(:comment) { build :comment, content: "Rasim was here" }
   let(:expected_comment_params) do
     {
       content: "Rasim was here"
@@ -25,7 +19,7 @@ RSpec.describe CreatesComment::Create do
   end
 
   context "with invalid params" do
-    let(:comment_params) { { content: nil } }
+    let(:comment) { build :comment, user_id: nil }
 
     it "failures" do
       interactor.run
