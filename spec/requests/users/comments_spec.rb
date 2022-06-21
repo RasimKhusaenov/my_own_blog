@@ -5,17 +5,15 @@ RSpec.describe "Companies", type: :request do
 
   let(:valid_attributes) do
     {
-      content: "Rasim was here",
-      article_id: article.id,
-      user_id: user.id
+      content: "Rasim was here"
     }
   end
-  let(:article) { create :article }
+  let(:article) { create :article, :published }
 
   describe "POST /create" do
     context "with valid parameters" do
       before do
-        post users_comment_path, params: { comment: valid_attributes }
+        post users_article_comments_path(article), params: { comment: valid_attributes }
       end
 
       it "creates a new comment" do
@@ -28,10 +26,10 @@ RSpec.describe "Companies", type: :request do
     end
 
     context "with invalid parameters" do
-      let(:invalid_attributes) { { content: "", article_id: article.id } }
+      let(:invalid_attributes) { { content: "" } }
 
       it "doesn't create a new comment" do
-        post users_comment_path, params: { comment: invalid_attributes }
+        post users_article_comments_path(article), params: { comment: invalid_attributes }
 
         expect(response).to redirect_to article_path(article)
         expect(Comment.count).to be_zero

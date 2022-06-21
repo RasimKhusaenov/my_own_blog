@@ -6,11 +6,9 @@ p #{article.content}
 - if allowed_to?(:destroy?, article, with: Users::Articles::PublicationPolicy)
   = button_to "Back to Draft", users_article_publication_path(article), method: :delete, class: "btn btn-secondary"
 
-- if (current_user.present? && article.published?) || comments.present?
-  hr
-    p
-      b Comments:
-      - if current_user.present? && article.published?
-        = render partial: "comments/form"
-      - if comments.present?
-        = render partial: "comments/list"
+hr
+  p
+    b Comments:
+    - if allowed_to?(:create?, comment, with: Users::CommentPolicy)
+      = render partial: "comments/form"
+    = render partial: "comments/list"

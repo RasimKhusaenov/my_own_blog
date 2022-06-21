@@ -1,7 +1,6 @@
 module Users
   class CommentsController < Users::BaseController
     expose :comment
-    expose :article
 
     def create
       self.comment = create_comment.comment
@@ -20,7 +19,12 @@ module Users
     end
 
     def comment_params
-      params.require(:comment).permit(:content, :article_id, :user_id)
+      params.require(:comment).permit(:content).merge(
+        {
+          user: current_user,
+          article_id: params.require(:article_id)
+        }
+      )
     end
 
     def create_comment

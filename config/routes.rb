@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    resource :comment, only: %i[create]
     resource :company, only: %i[new create]
     resource :me, only: %i[show edit update], controller: "me"
     resource :passwords, only: %i[edit update]
     resources :articles, only: %i[create] do
       resources :publications, only: %i[create destroy], module: :articles
+      resources :comments, only: %i[create]
     end
   end
 

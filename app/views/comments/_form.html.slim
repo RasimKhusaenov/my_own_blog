@@ -1,7 +1,4 @@
-= simple_form_for comment, url: users_comment_path do |form|
-  = form.hidden_field :article_id, value: article.id
-  = form.hidden_field :user_id, value: current_user.id
-
+= simple_form_for [:users, article, comment] do |form|
   = form.input :content
 
   = form.button :submit, class: "btn btn-primary mt-3"
