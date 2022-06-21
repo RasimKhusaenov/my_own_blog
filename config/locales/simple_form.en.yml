@@ -10,3 +10,5 @@ en:
     labels:
       feedback:
         author: Name
+      comment:
+        content: What do you think about it?

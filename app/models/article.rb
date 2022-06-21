@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   scope :published, -> { where(published: true) }
 
+  has_many :comments, dependent: :destroy
+
   belongs_to :company, optional: true
   belongs_to :user
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
+    resource :comment, only: %i[create]
     resource :company, only: %i[new create]
     resource :me, only: %i[show edit update], controller: "me"
     resource :passwords, only: %i[edit update]
