@@ -1,5 +1,5 @@
 module Users
-  class MeController < BaseController
+  class MeController < Users::BaseController
     def show; end
 
     def edit; end

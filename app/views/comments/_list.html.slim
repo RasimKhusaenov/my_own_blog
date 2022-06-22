@@ -1,0 +1,9 @@
+- if comments.present?
+  ul class="list-unstyled"
+    - comments.each do |comment|
+      li class="py-1"
+        = comment.user.first_name
+        ' :
+        = comment.content
+- else
+  p No comments.

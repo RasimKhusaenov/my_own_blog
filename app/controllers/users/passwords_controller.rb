@@ -1,5 +1,5 @@
 module Users
-  class PasswordsController < BaseController
+  class PasswordsController < Users::BaseController
     expose :password_form, :build_password_form
 
     def edit; end

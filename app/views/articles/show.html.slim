@@ -1,8 +1,14 @@
 h1 #{article.title}
-p
-  | #{article.content}
+p #{article.content}
 
 - if allowed_to?(:create?, article, with: Users::Articles::PublicationPolicy)
   = button_to "Publish", users_article_publications_path(article), class: "btn btn-primary"
 - if allowed_to?(:destroy?, article, with: Users::Articles::PublicationPolicy)
   = button_to "Back to Draft", users_article_publication_path(article), method: :delete, class: "btn btn-secondary"
+
+hr
+  p
+    b Comments:
+    - if allowed_to?(:create?, comment, with: Users::CommentPolicy)
+      = render partial: "comments/form"
+    = render partial: "comments/list"

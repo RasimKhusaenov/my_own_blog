@@ -1,5 +1,5 @@
 module Users
-  class ArticlesController < BaseController
+  class ArticlesController < Users::BaseController
     expose :article
     expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 

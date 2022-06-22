@@ -1,6 +1,6 @@
 module Users
   module Articles
-    class PublicationsController < BaseController
+    class PublicationsController < Users::BaseController
       expose :article, scope: -> { authorized(Article.all) }
 
       def create
