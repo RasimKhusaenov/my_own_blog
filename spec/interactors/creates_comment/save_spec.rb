@@ -12,7 +12,7 @@ RSpec.describe CreatesComment::Save do
     }
   end
 
-  it "creates comment" do
+  it "saves comment" do
     expect { interactor.run }.to change(Comment, :count).by(1)
 
     expect(context.comment).to have_attributes(expected_comment_params)
@@ -27,7 +27,7 @@ RSpec.describe CreatesComment::Save do
       expect(context).to be_failure
     end
 
-    it "doesn't create comment" do
+    it "doesn't save comment" do
       expect { interactor.run }.not_to change(Comment, :count)
     end
   end
