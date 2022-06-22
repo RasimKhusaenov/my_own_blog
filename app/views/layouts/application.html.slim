@@ -35,15 +35,13 @@ html
       div class="offset-4 col-4"
         = yield
 
-    footer class="d-flex justify-content-between bg-light p-2 px-4"
-      div class="d-flex align-items-center justify-content-between col-12"
-        div class="d-flex"
-          | &copy; Rasim Khusaenov 2022
-        div class="d-inline-block"
-          ul class="list-unstyled m-0"
-            li class="d-inline-block"
-              = link_to "About me", pages_about_path, class: "nav-link"
-            li class="d-inline-block"
-              = link_to "Contact me", new_feedback_path, class: "nav-link"
-            li class="d-inline-block"
-              = link_to "Create company", new_users_company_path, class: "nav-link pe-0"
+    footer class="d-flex align-items-center justify-content-between bg-light p-2 px-4"
+      div
+        | &copy; Rasim Khusaenov 2022
+      ul class="list-unstyled m-0"
+        li class="d-inline-block"
+          = link_to "About me", pages_about_path, class: "nav-link"
+        li class="d-inline-block"
+          = link_to "Contact me", new_feedback_path, class: "nav-link"
+        li class="d-inline-block"
+          = link_to "Create company", new_users_company_path, class: "nav-link pe-0"
