@@ -26,6 +26,10 @@ en:
             success: "You've published article!"
           destroy:
             success: "Publication of the article has been canceled!"
+      comments:
+        create:
+          success: "Comment saved!"
+          failure: "Comment can't be created."
       companies:
         create:
           success: "Company saved!"
@@ -57,6 +61,8 @@ en:
   helpers:
     not_found: "Not found."
     submit:
+      comment:
+        create: "Share"
       company:
         create: "Create"
       user:

@@ -1,8 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Companies::RegistrationPolicy do
-  let(:policy) { described_class.new(record: company, user: user) }
-  let(:company) { build_stubbed :company }
+  let(:policy) { described_class.new(user: user) }
   let(:user) { nil }
 
   describe "#create?" do
