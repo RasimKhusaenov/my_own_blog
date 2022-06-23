@@ -1,9 +1,14 @@
 - if comments.present?
-  ul class="list-unstyled"
-    - comments.each do |comment|
-      li class="py-1"
+  - comments.each do |comment|
+    div class="flex-column border-bottom border-1 mb-1 pb-1"
+      div class="d-flex align-items-center"
         = comment.user.first_name
-        ' :
+        '  ·
+        a class="text-muted ps-1 text-decoration-none comment__date"
+          = time_ago_in_words comment.created_at
+          '  ago
+      p class="text-secondary mb-0"
         = comment.content
+
 - else
-  p No comments.
+  div No comment yet.
