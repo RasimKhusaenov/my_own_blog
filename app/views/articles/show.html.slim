@@ -7,7 +7,7 @@ p #{article.content}
   = button_to "Back to Draft", users_article_publication_path(article), method: :delete, class: "btn btn-secondary"
 
 section class="border-top border-1 pt-2"
-  div class="d-flex align-items-center"
+  div class="d-inline-block align-items-center"
     h5 class="d-inline-block"
       | Comments
       - if comments.size.positive?
