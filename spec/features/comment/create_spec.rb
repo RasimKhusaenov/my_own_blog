@@ -10,7 +10,7 @@ RSpec.feature "Create comment" do
 
     fill_in :comment_content, with: "Rasim was here"
 
-    click_button "Share"
+    click_button "Send"
 
     expect(page).to have_content("Comment saved!")
     expect(page).to have_content("Rasim was here")

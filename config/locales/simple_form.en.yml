@@ -10,5 +10,6 @@ en:
     labels:
       feedback:
         author: Name
+    placeholders:
       comment:
-        content: What do you think about it?
+        content: Add comment...
