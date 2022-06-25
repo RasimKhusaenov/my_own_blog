@@ -10,7 +10,7 @@ section class="border-top border-1 pt-2"
   h5 class="d-flex align-items-center"
     | Comments
     - if comments.size.positive?
-      div class="d-flex align-items-center bg-secondary text-white rounded-pill ms-1 comment__counter"
+      div class="d-flex align-items-center justify-content-between bg-secondary text-white rounded-pill ms-1 comment__counter"
         = comments.size
   - if allowed_to?(:create?, comment, with: Users::CommentPolicy)
     = render partial: "comments/form"
