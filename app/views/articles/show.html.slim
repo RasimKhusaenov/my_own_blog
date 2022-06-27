@@ -6,9 +6,12 @@ p #{article.content}
 - if allowed_to?(:destroy?, article, with: Users::Articles::PublicationPolicy)
   = button_to "Back to Draft", users_article_publication_path(article), method: :delete, class: "btn btn-secondary"
 
-hr
-  p
-    b Comments:
-    - if allowed_to?(:create?, comment, with: Users::CommentPolicy)
-      = render partial: "comments/form"
-    = render partial: "comments/list"
+section class="border-top border-1 pt-2"
+  h5 class="d-flex align-items-center"
+    | Comments
+    - if comments.size.positive?
+      div class="d-flex align-items-center justify-content-center bg-secondary text-white rounded-pill ms-1 comment__counter"
+        = comments.size
+  - if allowed_to?(:create?, comment, with: Users::CommentPolicy)
+    = render partial: "comments/form"
+  = render partial: "comments/list"

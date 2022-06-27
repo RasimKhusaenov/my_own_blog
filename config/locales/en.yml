@@ -62,7 +62,7 @@ en:
     not_found: "Not found."
     submit:
       comment:
-        create: "Share"
+        create: "Send"
       company:
         create: "Create"
       user:
