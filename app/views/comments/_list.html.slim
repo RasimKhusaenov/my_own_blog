@@ -1,10 +1,10 @@
 - if comments.present?
   - comments.each do |comment|
-    div class="flex-column border-bottom border-1 mb-1 pb-1"
+    div class="flex-column border-bottom border-1 mb-2 pb-2"
       div class="d-flex align-items-center"
         => comment.user.first_name
         | ·
-        span class="text-muted ps-1 text-decoration-none comment__date"
+        span class="text-muted ps-1 comment__date"
           => time_ago_in_words comment.created_at
           | ago
       p class="text-secondary mb-0 comment__content"
