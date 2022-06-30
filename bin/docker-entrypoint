@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if [ -f tmp/pids/server.pid ]; then
+  rm tmp/pids/server.pid
+fi
+
+bundle install
+bundle exec rails db:prepare
+rails server -p 5000
