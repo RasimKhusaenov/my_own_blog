@@ -29,3 +29,5 @@ yarn-debug.log*
 .yarn-integrity
 coverage
 spec/examples.txt
+.env
+.docker-sync/*
