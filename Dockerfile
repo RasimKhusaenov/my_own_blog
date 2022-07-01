@@ -1,8 +1,8 @@
 FROM ruby:3.0.0-alpine
 
 ARG RAILS_ROOT=/my_own_blog
-ARG PACKAGES="postgresql-dev build-base tzdata gcompat yarn"
-ARG PORT=5000
+ARG PACKAGES="postgresql-dev bash build-base tzdata gcompat yarn"
+ARG PORT ${RAILS_PORT}
 ARG BUNDLER_VERSION="2.3.9"
 ENV BUNDLE_PATH="/bundle_cache"
 ENV GEM_HOME="/bundle_cache"

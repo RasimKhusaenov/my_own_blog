@@ -1,18 +1,18 @@
-version: '3.7'
+version: "3.7"
 
 services:
   web:
+    env_file: .env
     build: .
     volumes:
       - .:/my_own_blog:cached
       - bundle_cache:/bundle_cache
     ports:
-      - 5000:5000
+      - ${RAILS_PORT}:${RAILS_PORT}
     depends_on:
       - postgres
       - redis
     environment:
-      RAILS_PORT: 5000
       DATABASE_HOST: postgres
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: postgres
@@ -35,14 +35,13 @@ services:
     image: redis:6.0-rc3-alpine
 
   sidekiq:
+    env_file: .env
     depends_on:
       - web
       - postgres
       - redis
     build: .
-    environment:
-      REDIS_URL: redis://redis:6379/1
-    command: sh -c './bin/wait-for web:5000 -- bundle exec sidekiq'
+    command: sh -c "bin/wait-for web:${RAILS_PORT} -- bundle exec sidekiq"
 
 volumes:
   bundle_cache:

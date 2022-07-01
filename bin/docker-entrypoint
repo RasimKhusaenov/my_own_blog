@@ -8,4 +8,4 @@ fi
 
 bundle install
 bundle exec rails db:prepare
-bundle exec rails server -b 0.0.0.0 -p 5000
+bundle exec rails server -b 0.0.0.0 -p ${RAILS_PORT:-5000}
