@@ -2,23 +2,21 @@ version: "3.7"
 
 services:
   web:
-    env_file: .env
+    env_file:
+      - .env
     build: .
     volumes:
       - .:/my_own_blog:cached
       - bundle_cache:/bundle_cache
     ports:
-      - ${RAILS_PORT}:${RAILS_PORT}
+      - 5000:3000
     depends_on:
       - postgres
       - redis
     environment:
-      DATABASE_HOST: postgres
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-    stdin_open: true
-    tty: true
-    command: bin/docker-entrypoint
+      PIDFILE: /tmp/pids/server.pid
+    tmpfs:
+      - /tmp/pids/
 
   postgres:
     image: postgres:14.1-alpine
@@ -41,7 +39,7 @@ services:
       - postgres
       - redis
     build: .
-    command: sh -c "bin/wait-for web:${RAILS_PORT} -- bundle exec sidekiq"
+    command: bin/wait-for web:3000 -- bundle exec sidekiq
 
 volumes:
   bundle_cache:
