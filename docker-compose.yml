@@ -38,7 +38,7 @@ services:
       - postgres
       - redis
     build: .
-    command: bin/wait-for web:3000 -- bundle exec sidekiq
+    command: bundle exec sidekiq
 
 volumes:
   bundle_cache:
