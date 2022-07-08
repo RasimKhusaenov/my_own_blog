@@ -14,8 +14,10 @@ RUN apk update \
 WORKDIR $RAILS_ROOT
 
 RUN gem install bundler:$BUNDLER_VERSION
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 RUN bundle install --jobs 5
+
+COPY package.json yarn.lock ./
 RUN yarn install --check-files
 
 ADD . $RAILS_ROOT
