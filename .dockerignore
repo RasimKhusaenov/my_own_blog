@@ -1,0 +1,34 @@
+# Ignore environment file since there are could be some sensitive credentials
+.env
+
+# Ignore the temporary files:
+/tmp/*
+/log/*.log
+
+# Ignore the gems installed by bundler, as they should be installed from zero
+# by the Docker image building process:
+/vendor/bundle
+.bundle
+
+# Ignore shell & console artifacts, such as bash, pry history logs:
+.bash_history
+.pry_history
+
+# Ignore the docker-compose project files:
+docker-compose.yml
+
+.DS_Store
+.bin
+.git
+.gitignore
+.bundle
+.rspec
+.idea
+public/packs
+public/packs-test
+node_modules
+yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+coverage
+spec/examples.txt

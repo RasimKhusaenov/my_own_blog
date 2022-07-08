@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  web:
+    env_file:
+      - .env
+    build: .
+    volumes:
+      - .:/my_own_blog:cached
+      - bundle_cache:/bundle_cache
+      - node_modules:/app/node_modules
+    ports:
+      - 5000:3000
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      PIDFILE: /tmp/pids/server.pid
+    tmpfs:
+      - /tmp/pids/
+
+  postgres:
+    image: postgres:14.1-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data/pgdata
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+  redis:
+    image: redis:6.0-rc3-alpine
+
+  sidekiq:
+    env_file: .env
+    depends_on:
+      - postgres
+      - redis
+    build: .
+    command: bundle exec sidekiq
+
+volumes:
+  bundle_cache:
+  pg_data:
+  node_modules: 
