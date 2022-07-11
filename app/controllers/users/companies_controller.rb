@@ -8,7 +8,7 @@ module Users
       self.company = create_company.company
 
       if create_company.success?
-        respond_with company, location: root_path
+        respond_with company
       else
         respond_with company, alert: create_company.error
       end

@@ -52,7 +52,7 @@ RSpec.describe "Companies", type: :request do
       end
 
       it "redirects to the blog page" do
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to company_path(Company.last)
       end
     end
 
