@@ -43,6 +43,8 @@ RSpec.describe "Companies", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
+      let(:created_company) { Company.last }
+
       before do
         post users_company_path, params: { company: valid_attributes }
       end
@@ -51,8 +53,8 @@ RSpec.describe "Companies", type: :request do
         expect(Company.count).to eq 1
       end
 
-      it "redirects to the blog page" do
-        expect(response).to redirect_to company_path(Company.last)
+      it "redirects to the created company page" do
+        expect(response).to redirect_to company_path(created_company)
       end
     end
 
