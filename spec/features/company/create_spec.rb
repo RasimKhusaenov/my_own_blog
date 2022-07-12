@@ -13,5 +13,6 @@ RSpec.feature "Create company" do
     click_button "Create"
 
     expect(page).to have_content("Company saved!")
+    expect(page).to have_content(company_attributes[:official_name])
   end
 end
