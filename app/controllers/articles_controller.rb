@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   expose :article, scope: -> { authorized_articles }
   expose :comment, -> { article.comments.new }
   expose :comments, -> { article.comments.includes(:user) }
-  expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
+  expose :articles, -> { ArticleDecorator.wrap(paginate(filtered_articles)) }
 
   def index; end
 
@@ -12,5 +12,13 @@ class ArticlesController < ApplicationController
 
   def authorized_articles
     authorized(Article.order(created_at: :desc))
+  end
+
+  def filtered_articles
+    FilteredArticlesQuery.new(authorized_articles, filter_params).all
+  end
+
+  def filter_params
+    params.permit(:search)
   end
 end

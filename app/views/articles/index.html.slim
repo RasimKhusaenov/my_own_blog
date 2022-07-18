@@ -1,5 +1,7 @@
 h1 class="text-center" Articles
 
+= render "articles/search"
+
 - if allowed_to?(:create?, Article)
   div class="d-grid gap-2 mx-auto"
     = render "articles/form"
