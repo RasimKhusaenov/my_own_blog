@@ -3,6 +3,8 @@ module Users
     expose :article
     expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
+    def new; end
+
     def create
       if article.save
         respond_with article
