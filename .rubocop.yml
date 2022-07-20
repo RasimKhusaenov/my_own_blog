@@ -36,6 +36,9 @@ Metrics/BlockLength:
     - spec/interactors/**/*.rb
     - spec/requests/**/*.rb
 
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
 RSpec/Capybara/FeatureMethods:
   EnabledMethods: [feature, scenario]
 

@@ -7,7 +7,7 @@ RSpec.describe "Articles", type: :request do
   let(:article) { create(:article) }
 
   describe "GET /index" do
-    it "renders an message about no articles" do
+    it "renders a message about no articles" do
       get articles_url
 
       expect(response).to be_successful
