@@ -6,6 +6,13 @@ RSpec.describe "Users::Articles", type: :request do
   let(:valid_attributes) { { title: "Internship", content: "It's been a wonderful 3 months" } }
   let(:created_article) { Article.last }
 
+  describe "GET /new" do
+    it "renders a successful response" do
+      get new_users_article_path
+      expect(response).to be_successful
+    end
+  end
+
   describe "POST /create" do
     context "with valid parameters" do
       before do

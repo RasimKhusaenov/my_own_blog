@@ -8,6 +8,8 @@ RSpec.feature "Create Article" do
   scenario "User creates article" do
     visit root_path
 
+    click_link "New"
+
     fill_form(:article, **article_attributes)
 
     click_button "Create Article"
