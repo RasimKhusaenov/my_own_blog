@@ -1,0 +1,9 @@
+$gray-600: #636363 !default;
+
+$green: #389230 !default;
+
+$primary: $green !default;
+
+.btn-primary {
+  @extend .text-white;
+}

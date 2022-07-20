@@ -27,4 +27,4 @@ h1 class="text-center" Articles
       p class="card-text"
         | But it is not.
 
-== render "shared/bootstrap_nav.html.slim", pagy: paginator if paginator.pages > 1
+== render "shared/bootstrap_nav", pagy: paginator if paginator.pages > 1
