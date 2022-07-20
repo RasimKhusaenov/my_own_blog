@@ -12,7 +12,7 @@ RSpec.describe FilteredArticlesQuery do
     it { is_expected.to match_array(relation) }
   end
 
-  describe ".by_search" do
+  describe "#by_search" do
     let!(:article_1) { create :article, :published, title: "How to add search to Rails project?" }
     let!(:article_2) { create :article, content: "Why you not use pg_search?" }
     let!(:article_3) { create :article, title: "Invalid" }
