@@ -1,10 +1,13 @@
 h1 class="text-center" Articles
 
-= render "articles/search"
+div class="d-flex flex-items-start"
+  = render "articles/search"
 
-- if allowed_to?(:create?, Article)
-  div class="d-grid gap-2 mx-auto"
-    = render "articles/form"
+  - if allowed_to?(:create?, Article)
+    div
+      = link_to new_users_article_path, class: "d-flex align-items-center btn btn-primary ms-1" do
+        = image_pack_tag 'media/images/journal-plus.svg', class: "me-1"
+        | New
 
 - articles.each do |article|
   = link_to article, class: "text-decoration-none"

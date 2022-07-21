@@ -20,3 +20,9 @@
     overflow-y: hidden;
   }
 }
+
+.article {
+  &__content {
+    white-space: pre-line;;
+  }
+}

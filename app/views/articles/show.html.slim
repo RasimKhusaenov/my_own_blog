@@ -1,5 +1,5 @@
 h1 #{article.title}
-p #{article.content}
+p class="article__content" #{article.content}
 
 - if allowed_to?(:create?, article, with: Users::Articles::PublicationPolicy)
   = button_to "Publish", users_article_publications_path(article), class: "btn btn-primary"

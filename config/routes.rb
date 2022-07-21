@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resource :company, only: %i[new create]
     resource :me, only: %i[show edit update], controller: "me"
     resource :passwords, only: %i[edit update]
-    resources :articles, only: %i[create] do
+    resources :articles, only: %i[new create] do
       resources :publications, only: %i[create destroy], module: :articles
       resources :comments, only: %i[create]
     end
