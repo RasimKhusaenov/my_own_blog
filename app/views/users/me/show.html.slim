@@ -1,20 +1,21 @@
-h1 Your Profile
+div class="offset-2 col-8"
+  h1 Your Profile
 
-p
-  strong First name:
-  |  #{current_user.first_name}
-
-- if current_user.last_name.present?
   p
-    strong Last name:
-    |  #{current_user.last_name}
+    strong First name:
+    |  #{current_user.first_name}
 
-p
-  strong Email:
-  |  #{current_user.email}
+  - if current_user.last_name.present?
+    p
+      strong Last name:
+      |  #{current_user.last_name}
 
-p
-  = link_to "Edit profile", edit_users_me_path, class: "btn btn-secondary"
+  p
+    strong Email:
+    |  #{current_user.email}
 
-p
-  = link_to "Wanna change password?", edit_users_passwords_path
+  p
+    = link_to "Edit profile", edit_users_me_path, class: "btn btn-secondary"
+
+  p
+    = link_to "Wanna change password?", edit_users_passwords_path

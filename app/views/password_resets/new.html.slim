@@ -1,9 +1,10 @@
-h1 Forgot your password?
+div class="offset-2 col-8"
+  h1 Forgot your password?
 
-= form_with url: password_reset_path do |form|
-  div class="mb-3"
-    = form.label :email
-    = form.text_field :email, class: "form-control", placeholder: "rasim.khusaenov@flatstack.dev"
+  = form_with url: password_reset_path do |form|
+    div class="mb-3"
+      = form.label :email
+      = form.text_field :email, class: "form-control", placeholder: "rasim.khusaenov@flatstack.dev"
 
-  div class="mb-3"
-    = form.submit "Reset password", class: "btn btn-primary"
+    div class="mb-3"
+      = form.submit "Reset password", class: "btn btn-primary"

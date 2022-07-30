@@ -1,10 +1,11 @@
-h1 class="text-center" Feedback
+div class="offset-2 col-8"
+  h1 class="text-center" Feedback
 
-= simple_form_for(feedback, url: feedback_path) do |form|
-  legend = t(".form_legend")
+  = simple_form_for(feedback, url: feedback_path) do |form|
+    legend = t(".form_legend")
 
-  = form.input :author
-  = form.input :email
-  = form.input :message, as: :text
+    = form.input :author
+    = form.input :email
+    = form.input :message, as: :text
 
-  = form.button :submit, class: "btn btn-primary mt-3"
+    = form.button :submit, class: "btn btn-primary mt-3"

@@ -1,9 +1,10 @@
-h1 Reset your password
+div class="offset-2 col-8"
+  h1 Reset your password
 
-= simple_form_for reset_password_form, url: password_reset_path(token: params[:token]), method: :patch do |form|
-  div class="mb-3"
-    = form.input :new_password
-    = form.input :password_confirmation
+  = simple_form_for reset_password_form, url: password_reset_path(token: params[:token]), method: :patch do |form|
+    div class="mb-3"
+      = form.input :new_password
+      = form.input :password_confirmation
 
-  div class="mb-3"
-    = form.button :submit, class: "btn btn-primary"
+    div class="mb-3"
+      = form.button :submit, class: "btn btn-primary"
