@@ -7,6 +7,6 @@ class CompaniesController < ApplicationController
   private
 
   def authorized_articles
-    authorized(company.articles.order(created_at: :desc))
+    authorized(company.articles.order(created_at: :desc).includes(:comments))
   end
 end

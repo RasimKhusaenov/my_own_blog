@@ -1,0 +1,33 @@
+- articles.each_slice(2) do |article_left, article_right|
+  .row.mb-3
+    = link_to article_left, class: "col-sm-6 text-decoration-none text-black"
+      .card[class=article_left.card_styles]
+        .card-header = article_left.date
+        .card-body
+          h5.card-title = article_left.title
+          p.card-text = article_left.preview
+          .d-flex
+            = image_pack_tag 'media/images/chat.svg'
+            .ms-1
+              = article_left.comments.size
+    - if article_right.present?
+      = link_to article_right, class: "col-sm-6 text-decoration-none text-black"
+        .card[class=article_right.card_styles]
+          .card-header = article_right.date
+          .card-body
+            h5.card-title = article_right.title
+            p.card-text = article_right.preview
+            .d-flex
+              = image_pack_tag 'media/images/chat.svg'
+              .ms-1
+                = article_right.comments.size
+
+- if articles.empty?
+  div class="card text-dark bg-warning mb-3"
+    div class="card-header"
+      | WARNING
+    div class="card-body"
+      h5 class="card-title"
+        | There should be an articles here.
+      p class="card-text"
+        | But it is not.
