@@ -9,6 +9,6 @@ div class="d-flex flex-items-start"
         = image_pack_tag 'media/images/journal-plus.svg', class: "me-1"
         | New
 
-= render partial: "list"
+= render partial: "articles/list"
 
 == render "shared/bootstrap_nav", pagy: paginator if paginator.pages > 1

@@ -1,8 +1,4 @@
 class ArticleDecorator < BaseDecorator
-  def button_color
-    published? ? "secondary" : "outline-light"
-  end
-
   def date
     created_at.strftime("%B %d, %Y")
   end
