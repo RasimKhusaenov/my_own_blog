@@ -11,17 +11,17 @@ RSpec.describe ArticleDecorator do
     it { is_expected.to eq("It's been a wonderful 3 months. I really...") }
   end
 
-  describe "#card_color" do
-    subject { described_class.new(article).card_color }
+  describe "#card_styles" do
+    subject { described_class.new(article).card_styles }
 
     context "when article isn't published" do
-      it { is_expected.to eq("secondary") }
+      it { is_expected.to eq("bg-secondary") }
     end
 
     context "when article is published" do
       let(:published) { true }
 
-      it { is_expected.to eq("dark") }
+      it { is_expected.to be_nil }
     end
   end
 end

@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   private
 
   def authorized_articles
-    authorized(Article.order(created_at: :desc))
+    authorized(Article.order(created_at: :desc).includes(:comments))
   end
 
   def filtered_articles
