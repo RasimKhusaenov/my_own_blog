@@ -12,5 +12,4 @@ class Company < ApplicationRecord
   has_one :owner, through: :owner_relationship, class_name: "User", source: :user
 
   validates :official_name, presence: true, uniqueness: true
-  validates :unofficial_name, uniqueness: true, allow_blank: true
 end

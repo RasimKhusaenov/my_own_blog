@@ -16,7 +16,7 @@ module Users
     end
 
     def company_params
-      params.require(:company).permit(:official_name, :unofficial_name).merge(owner: current_user)
+      params.require(:company).permit(:official_name).merge(owner: current_user)
     end
 
     def create_company
