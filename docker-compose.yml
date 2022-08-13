@@ -18,6 +18,8 @@ services:
       PIDFILE: /tmp/pids/server.pid
     tmpfs:
       - /tmp/pids/
+    tty: true
+    stdin_open: true
 
   postgres:
     image: postgres:14.1-alpine
@@ -44,4 +46,4 @@ services:
 volumes:
   bundle_cache:
   pg_data:
-  node_modules: 
+  node_modules:

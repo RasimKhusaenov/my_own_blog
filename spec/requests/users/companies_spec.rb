@@ -54,7 +54,7 @@ RSpec.describe "Companies", type: :request do
       end
 
       it "redirects to the created company page" do
-        expect(response).to redirect_to company_path(created_company)
+        expect(response).to redirect_to root_url(subdomain: created_company.slug)
       end
     end
 

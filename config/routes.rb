@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get "pages/about"
+  constraints subdomain: Company::SUBDOMAIN_REGEXP do
+    root to: "companies#show", as: "company_root"
+  end
 
   root to: "articles#index"
 
+  get "pages/about"
   get "users/articles", to: "articles#index"
 
   resource :session, only: %i[new create destroy]
@@ -11,9 +14,6 @@ Rails.application.routes.draw do
 
   resources :articles, only: %i[index show]
   resource :feedback, only: %i[new create]
-  resources :companies, only: %i[show] do
-    resources :registrations, only: %i[new create], module: :companies
-  end
 
   namespace :users do
     resource :company, only: %i[new create]

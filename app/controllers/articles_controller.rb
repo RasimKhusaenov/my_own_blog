@@ -19,6 +19,6 @@ class ArticlesController < ApplicationController
   end
 
   def filter_params
-    params.permit(:search)
+    params.permit(:page, :search)
   end
 end

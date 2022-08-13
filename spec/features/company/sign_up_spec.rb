@@ -4,7 +4,7 @@ RSpec.feature "Sign Up" do
   let(:company) { create :company }
 
   scenario "Guest signs up" do
-    visit new_company_registration_path(company)
+    visit new_registration_url(subdomain: company.slug)
 
     fill_in "First name", with: "Rasim"
     fill_in "Email", with: "rasim.khusaenov@flatstack.dev"

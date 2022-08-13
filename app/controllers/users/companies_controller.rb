@@ -5,13 +5,8 @@ module Users
     def new; end
 
     def create
-      self.company = create_company.company
-
-      if create_company.success?
-        respond_with company
-      else
-        respond_with company, alert: create_company.error
-      end
+      respond_with create_company.company,
+                   location: root_url(subdomain: create_company.company.slug)
     end
 
     private
@@ -21,11 +16,11 @@ module Users
     end
 
     def company_params
-      params.require(:company).permit(:official_name, :unofficial_name)
+      params.require(:company).permit(:official_name, :unofficial_name).merge(owner: current_user)
     end
 
     def create_company
-      @create_company ||= CreateCompany.call(company_params: company_params, user: current_user)
+      @create_company ||= CreateCompany.call(company_params: company_params)
     end
   end
 end

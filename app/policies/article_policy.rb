@@ -3,9 +3,10 @@ class ArticlePolicy < ApplicationPolicy
     next relation if user&.administrative_role?
 
     relation.published
+    # TODO: Find out how to show current company drafts to company members
   end
 
   def create?
-    user&.administrative_role?
+    user&.administrative_role? || user&.companies&.include?(record&.company)
   end
 end
