@@ -106,5 +106,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   Rails.application.config.session_store :cookie_store,
-    domain: :all, tld_length: 3
+    domain: :all, tld_length: 2
 end
