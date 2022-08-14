@@ -43,5 +43,6 @@ module MyOwnBlog
 
     config.hosts << /[a-z0-9\-_]*\.?lvh\.me/
     config.hosts << /[a-z0-9\-_]*\.?example\.com/
+    config.hosts << /[a-z0-9\-_]*\.?my-own-blog-?\w*-?\d*.?herokuapp\.com/
   end
 end
