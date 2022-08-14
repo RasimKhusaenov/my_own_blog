@@ -1,4 +1,3 @@
-# TODO: Fix test
 require "rails_helper"
 
 RSpec.feature "Create company" do
