@@ -5,6 +5,7 @@ class RegistrationsController < ApplicationController
   def new; end
 
   def create
+    session[:current_user_id] = register_user.user&.id
     respond_with register_user.user,
                  location: root_url(subdomain: company&.slug)
   end
