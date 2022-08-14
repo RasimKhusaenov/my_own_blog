@@ -40,9 +40,5 @@ module MyOwnBlog
     config.active_job.queue_adapter = :sidekiq
 
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml")]
-
-    config.hosts << /[a-z0-9\-_]*\.?lvh\.me/
-    config.hosts << /[a-z0-9\-_]*\.?example\.com/
-    config.hosts << /[a-z0-9\-_]*\.?my-own-blog-?\w*-?\d*.?herokuapp\.com/
   end
 end
