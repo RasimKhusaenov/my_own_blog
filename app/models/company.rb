@@ -2,7 +2,7 @@ class Company < ApplicationRecord
   extend FriendlyId
   friendly_id :official_name, use: :slugged
 
-  SUBDOMAIN_REGEXP = /\A(?!(http|https|www|my-own-blog-?\w*-?\d*)\z)(\A[\w\-_]+)\z/
+  SUBDOMAIN_REGEXP = /\A(?!(http|https|www)\z)(\A[\w\-_]+)\z/
 
   has_many :company_members, dependent: :destroy
   has_many :articles, dependent: :nullify
