@@ -18,9 +18,6 @@ RSpec.describe CreateCompany do
       }
     end
     let(:user) { create :user }
-    let(:created_member) do
-      CompanyMember.find_by(company: context.company, user: user)
-    end
 
     it "creates company" do
       expect { interactor.run }.to change(Company, :count).by(1)
@@ -30,12 +27,6 @@ RSpec.describe CreateCompany do
 
     it "creates company member" do
       expect { interactor.run }.to change(CompanyMember, :count).by(1)
-    end
-
-    it "adds user to company as owner" do
-      interactor.run
-
-      expect(created_member.role).to be_owner
     end
   end
 end
