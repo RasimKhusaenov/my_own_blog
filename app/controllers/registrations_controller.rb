@@ -4,9 +4,12 @@ class RegistrationsController < ApplicationController
   def new; end
 
   def create
-    session[:current_user_id] = register_user.user&.id
-    respond_with register_user.user,
-                 location: root_url(subdomain: current_company&.subdomain)
+    if register_user.success?
+      session[:current_user_id] = register_user.user.id
+      respond_with register_user.user, location: root_path
+    else
+      respond_with register_user.user, alert: register_user.error
+    end
   end
 
   private
