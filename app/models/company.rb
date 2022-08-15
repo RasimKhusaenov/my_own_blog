@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
   extend FriendlyId
-  friendly_id :official_name, use: :slugged
+  friendly_id :official_name, use: :slugged, slug_column: :subdomain
 
   SUBDOMAIN_REGEXP = /\A(?!(http|https|www)\z)(\A[\w\-_]+)\z/
 

@@ -14,7 +14,7 @@ RSpec.describe "Registrations", type: :request do
 
     context "with subdomain" do
       it "renders a successful response" do
-        get new_registration_url(subdomain: company.slug)
+        get new_registration_url(subdomain: company.subdomain)
         expect(response).to be_successful
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe "Registrations", type: :request do
       let(:created_member) { CompanyMember.last }
 
       before do
-        post registrations_url(subdomain: company.slug), params: { user: valid_attributes }
+        post registrations_url(subdomain: company.subdomain), params: { user: valid_attributes }
       end
 
       it "creates a new user" do

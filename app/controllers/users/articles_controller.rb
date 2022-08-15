@@ -2,7 +2,7 @@ module Users
   class ArticlesController < Users::BaseController
     expose :article, :fetch_article
     expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
-    expose :company, -> { Company.find_by(slug: request.subdomain) }
+    expose :company, -> { Company.find_by(subdomain: request.subdomain) }
 
     def new; end
 

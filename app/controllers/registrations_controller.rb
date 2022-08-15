@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  expose :company, -> { Company.find_by(slug: request.subdomain) }
+  expose :company, -> { Company.find_by(subdomain: request.subdomain) }
   expose :user
 
   def new; end
@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
   def create
     session[:current_user_id] = register_user.user&.id
     respond_with register_user.user,
-                 location: root_url(subdomain: company&.slug)
+                 location: root_url(subdomain: company&.subdomain)
   end
 
   private

@@ -6,7 +6,7 @@ module Users
 
     def create
       respond_with create_company.company,
-                   location: root_url(subdomain: create_company.company.slug)
+                   location: root_url(subdomain: create_company.company.subdomain)
     end
 
     private

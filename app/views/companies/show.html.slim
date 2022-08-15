@@ -1,7 +1,7 @@
 h1 #{company.official_name}
 
 div class="d-flex flex-items-start"
-  = render "articles/search", url: root_url(subdomain: company.slug)
+  = render "articles/search", url: root_url(subdomain: company.subdomain)
 
   - if allowed_to?(:create?, article)
     div
