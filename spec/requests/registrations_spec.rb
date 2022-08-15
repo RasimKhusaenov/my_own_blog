@@ -31,7 +31,7 @@ RSpec.describe "Registrations", type: :request do
       end
 
       it "redirects to the blog page" do
-        expect(response).to redirect_to root_url(subdomain: nil)
+        expect(response).to redirect_to root_path
       end
     end
 
