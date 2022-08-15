@@ -2,7 +2,6 @@ module Users
   class ArticlesController < Users::BaseController
     expose :article, :fetch_article
     expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
-    expose :company, -> { Company.find_by(subdomain: request.subdomain) }
 
     def new; end
 
@@ -31,7 +30,7 @@ module Users
     def fetch_article
       if params[:id].present?
         Article.find(params[:id])
-      elsif company.present?
+      elsif current_company.present?
         fetch_company_article
       elsif params[:article].present?
         Article.new(article_params)
@@ -42,9 +41,9 @@ module Users
 
     def fetch_company_article
       if params[:article].present?
-        company.articles.build(article_params)
+        current_company.articles.build(article_params)
       else
-        company.articles.build
+        current_company.articles.build
       end
     end
   end
