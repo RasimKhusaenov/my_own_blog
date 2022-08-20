@@ -24,27 +24,17 @@ module Users
     end
 
     def article_params
-      params.require(:article).permit(:title, :content).merge(user: current_user)
+      return default_article_params if params[:article].blank?
+
+      params.require(:article).permit(:title, :content).merge(default_article_params)
+    end
+
+    def default_article_params
+      @default_article_params ||= { user: current_user, company: current_company }
     end
 
     def fetch_article
-      if params[:id].present?
-        Article.find(params[:id])
-      elsif current_company.present?
-        fetch_company_article
-      elsif params[:article].present?
-        Article.new(article_params)
-      else
-        Article.new
-      end
-    end
-
-    def fetch_company_article
-      if params[:article].present?
-        current_company.articles.build(article_params)
-      else
-        current_company.articles.build
-      end
+      params[:id].present? ? Article.find(params[:id]) : Article.new(article_params)
     end
   end
 end
