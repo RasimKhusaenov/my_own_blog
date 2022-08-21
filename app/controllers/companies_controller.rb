@@ -1,12 +1,21 @@
 class CompaniesController < ApplicationController
-  expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
-  expose :company, find_by: :slug
+  expose :article, scope: -> { authorized_articles }
+  expose :articles, -> { ArticleDecorator.wrap(paginate(filtered_articles)) }
 
   def show; end
 
   private
 
   def authorized_articles
-    authorized(company.articles.order(created_at: :desc).includes(:comments))
+    authorized current_company.articles.order(created_at: :desc)
+                              .includes(:comments)
+  end
+
+  def filtered_articles
+    FilteredArticlesQuery.new(authorized_articles, filter_params).all
+  end
+
+  def filter_params
+    params.permit(:page, :search)
   end
 end

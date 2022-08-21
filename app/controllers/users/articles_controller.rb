@@ -1,6 +1,6 @@
 module Users
   class ArticlesController < Users::BaseController
-    expose :article
+    expose :article, :fetch_article
     expose :articles, -> { ArticleDecorator.wrap(paginate(authorized_articles)) }
 
     def new; end
@@ -20,11 +20,21 @@ module Users
     end
 
     def authorized_articles
-      authorized(Article.all)
+      authorized(Article.all.includes(:comments))
     end
 
     def article_params
-      params.require(:article).permit(:title, :content).merge(user: current_user)
+      return default_article_params if params[:article].blank?
+
+      params.require(:article).permit(:title, :content).merge(default_article_params)
+    end
+
+    def default_article_params
+      @default_article_params ||= { user: current_user, company: current_company }
+    end
+
+    def fetch_article
+      params[:id].present? ? Article.find(params[:id]) : Article.new(article_params)
     end
   end
 end

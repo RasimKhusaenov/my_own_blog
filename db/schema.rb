@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_135703) do
+ActiveRecord::Schema.define(version: 2022_08_15_040655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -39,13 +39,11 @@ ActiveRecord::Schema.define(version: 2022_06_20_135703) do
 
   create_table "companies", force: :cascade do |t|
     t.string "official_name", null: false
-    t.string "unofficial_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "slug"
+    t.string "subdomain"
     t.index ["official_name"], name: "index_companies_on_official_name", unique: true
-    t.index ["slug"], name: "index_companies_on_slug", unique: true
-    t.index ["unofficial_name"], name: "index_companies_on_unofficial_name", unique: true
+    t.index ["subdomain"], name: "index_companies_on_subdomain", unique: true
   end
 
   create_table "company_members", force: :cascade do |t|

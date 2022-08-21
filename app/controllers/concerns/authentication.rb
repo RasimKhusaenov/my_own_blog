@@ -5,7 +5,7 @@ module Authentication
 
   included do
     rescue_from UserNotAuthenticated, with: :not_authenticated!
-    helper_method :current_user
+    helper_method :current_user, :current_company
   end
 
   def authenticate_user!
@@ -16,6 +16,10 @@ module Authentication
 
   def current_user
     @current_user ||= User.find_by(id: session[:current_user_id])
+  end
+
+  def current_company
+    @current_company ||= Company.find_by(subdomain: request.subdomain)
   end
 
   private

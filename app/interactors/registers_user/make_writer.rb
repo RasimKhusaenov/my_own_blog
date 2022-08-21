@@ -5,6 +5,8 @@ module RegistersUser
     delegate :company, :user, to: :context
 
     def call
+      return if company.blank?
+
       raise_error if member.invalid?
     end
 

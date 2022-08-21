@@ -7,7 +7,7 @@
           h5.card-title = article_left.title
           p.card-text = article_left.preview
           .d-flex
-            = image_pack_tag 'media/images/chat.svg'
+            = image_pack_tag "media/images/chat.svg"
             .ms-1
               = article_left.comments.size
     - if article_right.present?
@@ -18,7 +18,7 @@
             h5.card-title = article_right.title
             p.card-text = article_right.preview
             .d-flex
-              = image_pack_tag 'media/images/chat.svg'
+              = image_pack_tag "media/images/chat.svg"
               .ms-1
                 = article_right.comments.size
 
