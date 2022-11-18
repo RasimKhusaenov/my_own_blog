@@ -21,6 +21,10 @@ en:
       articles:
         create:
           success: "Article saved!"
+        update:
+          failure: "Something went wrong."
+        destroy:
+          failure: "Something went wrong."
         publications:
           create:
             success: "You've published article!"

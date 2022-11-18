@@ -9,8 +9,18 @@ module Users
       if article.save
         respond_with article
       else
-        render "articles/index"
+        render "users/articles/new"
       end
+    end
+
+    def edit; end
+
+    def update
+      respond_with update_article.article
+    end
+
+    def destroy
+      respond_with destroy_article.article
     end
 
     private
@@ -26,7 +36,7 @@ module Users
     def article_params
       return default_article_params if params[:article].blank?
 
-      params.require(:article).permit(:title, :content).merge(default_article_params)
+      params.require(:article).permit(:title, :content)
     end
 
     def default_article_params
@@ -34,7 +44,15 @@ module Users
     end
 
     def fetch_article
-      params[:id].present? ? Article.find(params[:id]) : Article.new(article_params)
+      params[:id].present? ? Article.find(params[:id]) : Article.new(article_params.merge(default_article_params))
+    end
+
+    def update_article
+      @update_article ||= ::Articles::Update.call(article: article, article_params: article_params)
+    end
+
+    def destroy_article
+      @destroy_article ||= ::Articles::Destroy.call(article: article)
     end
   end
 end
