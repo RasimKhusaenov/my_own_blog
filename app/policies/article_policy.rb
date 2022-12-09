@@ -2,7 +2,8 @@ class ArticlePolicy < ApplicationPolicy
   relation_scope do |relation|
     next relation if user&.administrative_role?
 
-    relation.published.or(relation.where(user: user)).or(relation.where(company: user&.companies).where.not(company: nil))
+    relation.published.or(relation.where(user: user))
+            .or(relation.where(company: user&.companies).where.not(company: nil))
   end
 
   def create?
