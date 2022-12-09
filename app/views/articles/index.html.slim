@@ -1,7 +1,7 @@
 h1 class="text-center" Articles
 
 div class="d-flex flex-items-start"
-  = render "articles/search", url: articles_path
+  = render "articles/search", url: root_path
 
   - if allowed_to?(:create?, article)
     div
