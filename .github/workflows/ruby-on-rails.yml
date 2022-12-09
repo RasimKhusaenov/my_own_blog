@@ -30,7 +30,6 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0.3"
           bundler-cache: true
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -62,7 +61,6 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0.3"
           bundler-cache: true
       - name: Security audit dependencies
         run: bin/bundler-audit --update
