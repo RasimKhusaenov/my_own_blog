@@ -28,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1.99.0
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Setup Node
@@ -59,7 +59,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1.99.0
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
       - name: Security audit dependencies
