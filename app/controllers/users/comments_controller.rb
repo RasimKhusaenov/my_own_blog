@@ -11,6 +11,16 @@ module Users
       end
     end
 
+    def update
+      update_comment
+
+      respond_with comment.article do |format|
+        if update_comment.success?
+          format.turbo_stream { render turbo_stream: turbo_stream.update(comment) }
+        end
+      end
+    end
+
     private
 
     def authorize_resource!
@@ -23,6 +33,10 @@ module Users
 
     def create_comment
       @create_comment ||= CreateComment.call(comment: comment)
+    end
+
+    def update_comment
+      @update_comment ||= Comments::Save.call(comment: comment, comment_params: comment_params)
     end
   end
 end

@@ -1,10 +1,11 @@
-= simple_form_for [:users, article, comment] do |form|
-  div class="d-flex flex-column bg-light rounded-3 border border-1"
-    = form.input_field :content, as: :text,
-      class: "form-control-plaintext p-2 comment__input",
-      "data-behavior": "auto-resize"
+= turbo_frame_tag comment do
+  = simple_form_for [:users, article, comment] do |form|
+    div class="d-flex flex-column bg-light rounded-3 border border-1"
+      = form.input_field :content, as: :text,
+        class: "form-control-plaintext p-2 comment__input",
+        "data-behavior": "auto-resize"
 
-    = form.button :submit, class: "btn btn-primary ms-auto m-2"
+      = form.button :submit, class: "btn btn-primary ms-auto m-2"
 
 - content_for :head do
   = javascript_pack_tag :textEditing, "data-turbolinks-track": "reload"
