@@ -6,7 +6,7 @@ RSpec.feature "Destroy Article" do
   let!(:article) { create :article }
 
   scenario "User destroys article" do
-    visit article_path(article) 
+    visit article_path(article)
 
     click_button "Delete"
 
