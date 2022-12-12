@@ -21,7 +21,7 @@ en:
       articles:
         create:
           success: "Article saved!"
-        update:
+        save:
           failure: "Something went wrong."
         destroy:
           failure: "Something went wrong."

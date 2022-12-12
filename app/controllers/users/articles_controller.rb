@@ -48,11 +48,11 @@ module Users
     end
 
     def update_article
-      @update_article ||= ::Articles::Update.call(article: article, article_params: article_params)
+      ::Articles::Save.call(article: article, article_params: article_params)
     end
 
     def destroy_article
-      @destroy_article ||= ::Articles::Destroy.call(article: article)
+     ::Articles::Destroy.call(article: article)
     end
   end
 end
