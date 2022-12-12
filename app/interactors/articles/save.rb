@@ -11,7 +11,7 @@ module Articles
     end
 
     private
-    
+
     def article
       @article ||= context.article || Article.new
     end

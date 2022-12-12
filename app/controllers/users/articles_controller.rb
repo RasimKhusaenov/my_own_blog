@@ -52,7 +52,7 @@ module Users
     end
 
     def destroy_article
-     ::Articles::Destroy.call(article: article)
+      ::Articles::Destroy.call(article: article)
     end
   end
 end

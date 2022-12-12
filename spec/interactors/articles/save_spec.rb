@@ -6,7 +6,7 @@ RSpec.describe Articles::Save do
   let(:initial_context) { { article: article, article_params: article_params } }
   let(:article) { nil }
   let(:article_params) do
-    { 
+    {
       title: title,
       content: "Some content",
       user: user
@@ -37,7 +37,7 @@ RSpec.describe Articles::Save do
 
     context "when article can't be saved" do
       let(:title) { nil }
-      let(:expected_error_message) { "Something went wrong." } 
+      let(:expected_error_message) { "Something went wrong." }
 
       it "doesn't save article" do
         expect { interactor.run }.not_to change(Article, :count)
