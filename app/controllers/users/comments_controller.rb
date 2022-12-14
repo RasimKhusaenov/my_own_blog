@@ -16,9 +16,7 @@ module Users
     end
 
     def destroy
-      respond_with destroy_comment.comment do |format|
-        format.turbo_stream
-      end
+      respond_with destroy_comment.comment, &:turbo_stream
     end
 
     private
