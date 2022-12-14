@@ -1,4 +1,11 @@
 h1 #{article.title}
+
+/ TODO: Design it beautiful
+- if allowed_to?(:edit?, article)
+  = button_to "Edit", edit_users_article_path(article), method: :get, class: "btn btn-secondary"
+- if allowed_to?(:destroy?, article)
+  = button_to "Delete", users_article_path(article), method: :delete, class: "btn btn-secondary"
+
 p class="article__content" #{article.content}
 
 - if allowed_to?(:create?, article, with: Users::Articles::PublicationPolicy)
