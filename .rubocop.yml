@@ -34,6 +34,7 @@ Metrics/BlockLength:
   Exclude:
     - spec/forms/**/*.rb
     - spec/interactors/**/*.rb
+    - spec/policies/**/*.rb
     - spec/requests/**/*.rb
 
 Naming/VariableNumber:
@@ -56,6 +57,9 @@ RSpec/MultipleExpectations:
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
 
 Style/Documentation:
   Enabled: false

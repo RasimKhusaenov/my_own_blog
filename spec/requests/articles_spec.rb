@@ -10,7 +10,8 @@ RSpec.describe "Articles", type: :request do
     it "renders a message about no articles" do
       get articles_url
 
-      expect(response).to be_successful
+      expect(response).to be_redirect
+      follow_redirect!
       expect(response.body).to include("But it is not.")
     end
   end
