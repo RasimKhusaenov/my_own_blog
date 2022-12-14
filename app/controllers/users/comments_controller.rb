@@ -12,12 +12,12 @@ module Users
     end
 
     def update
-      update_comment
+      respond_with update_comment.comment, location: article
+    end
 
-      respond_with comment.article do |format|
-        if update_comment.success?
-          format.turbo_stream { render turbo_stream: turbo_stream.update(comment) }
-        end
+    def destroy
+      respond_with destroy_comment.comment do |format|
+        format.turbo_stream
       end
     end
 
@@ -37,6 +37,10 @@ module Users
 
     def update_comment
       @update_comment ||= Comments::Save.call(comment: comment, comment_params: comment_params)
+    end
+
+    def destroy_comment
+      @destroy_comment ||= Comments::Destroy.call(comment: comment)
     end
   end
 end

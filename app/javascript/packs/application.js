@@ -1,3 +1,8 @@
+import "@hotwired/turbo-rails"
+
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.session.drive = false
+
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -15,4 +20,3 @@ require.context('../images', true)
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import "controllers"

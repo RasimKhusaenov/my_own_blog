@@ -1,17 +1,20 @@
 - if comments.present?
   - comments.each do |comment|
-    = turbo_frame_tag comment do
-    	div class="flex-column border-bottom border-1 mb-2 pb-2"
-      	div class="d-flex align-items-center"
-        	=> comment.user.first_name
-        	| ·
-        	span class="text-muted ps-1 comment__date"
-          	=> time_ago_in_words comment.created_at
-          	| ago
-      	p class="text-secondary mb-0 comment__content"
-        	= comment.content
-  	 	- if allowed_to?(:update?, comment, with: Users::CommentPolicy)
-  			= link_to "Edit", edit_users_article_comment_path(article, comment), data: { turbo: true }
+		= turbo_frame_tag comment do
+			div class="flex-column border-bottom border-1 mb-2 pb-2"
+				div class="d-flex align-items-center"
+					=> comment.user.first_name
+					| ·
+					span class="text-muted ps-1 comment__date"
+						=> time_ago_in_words comment.created_at
+						| ago
+				= turbo_frame_tag "comment_#{comment.id}_content" do
+					p class="text-secondary mb-0 comment__content"
+						= comment.content
+					- if allowed_to?(:update?, comment, with: Users::CommentPolicy)
+						= link_to "Edit", edit_users_article_comment_path(article, comment)
+					- if allowed_to?(:destroy?, comment, with: Users::CommentPolicy)
+						= link_to "Destroy", [:users, article, comment], data: { turbo: true, turbo_method: :delete }
 
 - else
   div No comment yet.
