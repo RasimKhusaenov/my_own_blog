@@ -12,7 +12,7 @@
 					p class="text-secondary mb-0 comment__content"
 						= comment.content
 					- if allowed_to?(:update?, comment, with: Users::CommentPolicy)
-						= link_to "Edit", edit_users_article_comment_path(article, comment)
+						= link_to "Edit", edit_users_article_comment_path(article, comment), class: "me-1"
 					- if allowed_to?(:destroy?, comment, with: Users::CommentPolicy)
 						= link_to "Destroy", [:users, article, comment], data: { turbo: true, turbo_method: :delete }
 
