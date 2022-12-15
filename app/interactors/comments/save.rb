@@ -5,6 +5,8 @@ module Comments
     delegate :comment_params, to: :context
 
     def call
+      context.comment = comment
+
       raise_error unless comment.update(comment_params)
     end
 
@@ -15,7 +17,7 @@ module Comments
     end
 
     def raise_error
-      context.fail!(error: I18n.t("flash.users.comments.update.failure"))
+      context.fail!(error: I18n.t("flash.users.comments.save.failure"))
     end
   end
 end

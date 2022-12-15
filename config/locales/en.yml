@@ -34,6 +34,10 @@ en:
         create:
           success: "Comment saved!"
           failure: "Comment can't be created."
+        save:
+          failure: "Something went wrong."
+        destroy:
+          failure: "Something went wrong."
       companies:
         create:
           success: "Company saved!"

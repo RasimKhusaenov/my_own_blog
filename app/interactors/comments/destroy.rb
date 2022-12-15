@@ -11,7 +11,7 @@ module Comments
     private
 
     def raise_error
-      context.fail!
+      context.fail!(error: I18n.t("flash.users.comments.destroy.failure"))
     end
   end
 end
