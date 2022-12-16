@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe Users::CommentPolicy do
   let(:policy) { described_class.new(comment, user: current_user) }
-  let(:current_user) { build :user }
+  let(:current_user) { build :user, id: 1 }
   let(:article) { create :article, :published }
   let(:comment) { build :comment, article: article }
 
   describe "#create?" do
-    subject { policy.apply(:create?) }
+    subject { policy.create? }
 
     context "when current user present and article published" do
       it { is_expected.to be_truthy }
@@ -26,23 +26,21 @@ RSpec.describe Users::CommentPolicy do
     end
   end
 
-  %i[edit? update? destroy?].each do |policy_method|
-    describe "##{policy_method}" do
-      subject { policy.apply(policy_method) }
+  describe "#manage?" do
+    subject { policy.manage? }
 
-      let(:comment) { build_stubbed :comment, user: user }
+    let(:comment) { build_stubbed :comment, user_id: user_id }
 
-      context "when current user is comment's author" do
-        let(:user) { current_user }
+    context "when current user is comment's author" do
+      let(:user_id) { current_user.id }
 
-        it { is_expected.to be_truthy }
-      end
+      it { is_expected.to be_truthy }
+    end
 
-      context "when current user isn't comment's author" do
-        let(:user) { build_stubbed :user }
+    context "when current user isn't comment's author" do
+      let(:user_id) { 2 }
 
-        it { is_expected.to be_falsey }
-      end
+      it { is_expected.to be_falsey }
     end
   end
 end

@@ -1,19 +1,13 @@
 module Users
   class CommentPolicy < ApplicationPolicy
+    alias_rule :update?, :destroy?, :edit?, to: :manage?
+
     def create?
       user.present? && record.article.published?
     end
 
-    def edit?
-      update?
-    end
-
-    def update?
-      record.user == user
-    end
-
-    def destroy?
-      record.user == user
+    def manage?
+      record.user_id == user.id
     end
   end
 end
