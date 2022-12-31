@@ -4,7 +4,10 @@
       class: "form-control-plaintext p-2 comment__input",
       "data-behavior": "auto-resize"
 
-    = form.button :submit, class: "btn btn-primary ms-auto m-2"
+    div class="d-flex flex-row-reverse"
+      = form.button :submit, class: "btn btn-primary m-2"
+      - if comment.persisted?
+        = link_to "Cancel", article, class: "btn btn-outline-primary m-2"
 
 - content_for :head do
   = javascript_pack_tag :textEditing, "data-turbolinks-track": "reload"

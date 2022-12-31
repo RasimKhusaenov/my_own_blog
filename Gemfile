@@ -23,6 +23,7 @@ gem "sidekiq", "~> 6.4"
 gem "simple_form"
 gem "slim-rails"
 gem "turbolinks", "~> 5"
+gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "webpacker", "5.4.3"
 

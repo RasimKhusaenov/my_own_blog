@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resource :passwords, only: %i[edit update]
     resources :articles, only: %i[new create edit update destroy] do
       resources :publications, only: %i[create destroy], module: :articles
-      resources :comments, only: %i[create]
+      resources :comments, only: %i[create edit update destroy]
     end
   end
 

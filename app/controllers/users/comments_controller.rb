@@ -11,6 +11,14 @@ module Users
       end
     end
 
+    def update
+      respond_with update_comment.comment, location: article
+    end
+
+    def destroy
+      respond_with destroy_comment.comment.article, &:turbo_stream
+    end
+
     private
 
     def authorize_resource!
@@ -23,6 +31,14 @@ module Users
 
     def create_comment
       @create_comment ||= CreateComment.call(comment: comment)
+    end
+
+    def update_comment
+      @update_comment ||= Comments::Save.call(comment: comment, comment_params: comment_params)
+    end
+
+    def destroy_comment
+      @destroy_comment ||= Comments::Destroy.call(comment: comment)
     end
   end
 end
