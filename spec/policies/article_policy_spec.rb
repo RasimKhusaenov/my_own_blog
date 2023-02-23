@@ -27,7 +27,7 @@ RSpec.describe ArticlePolicy do
     end
 
     context "when current user is owner of the article's company" do
-      let(:record) { build_stubbed :article, company: company }
+      let(:record) { create :article, company: company }
       let(:company) { create :company }
 
       before do
