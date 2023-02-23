@@ -7,7 +7,7 @@ module Users
     end
 
     def manage?
-      record.user_id == user.id
+      record.user_id == user&.id
     end
   end
 end

@@ -6,19 +6,23 @@ class ArticlePolicy < ApplicationPolicy
             .or(relation.where(company: user&.companies).where.not(company: nil))
   end
 
+  alias_rule :update?, :destroy?, to: :edit?
+
   def create?
     user&.administrative_role? || user&.companies&.include?(record&.company)
   end
 
   def edit?
-    update?
+    user.present? && (user.administrative_role? || user_is_author? || user_is_company_owner?)
   end
 
-  def update?
-    user.present? && (user.administrative_role? || record.user == user)
+  private
+
+  def user_is_author?
+    record.user == user
   end
 
-  def destroy?
-    update?
+  def user_is_company_owner?
+    user == record&.company&.owner
   end
 end
